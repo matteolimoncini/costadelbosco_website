@@ -1,0 +1,368 @@
+/* Costa del Bosco — palette e tipografia dalla piattaforma di brand */
+:root {
+  --bosco: #1f3a2d;        /* verde bosco profondo */
+  --bosco-soft: #3d5a4a;
+  --calce: #f6f3ec;        /* bianco calce / carta naturale */
+  --carta: #ece6da;
+  --paglia: #e2c25b;       /* giallo paglierino, il colore del Cortese */
+  --ink: #1b2620;
+  --muted: #5e6b63;
+  --line: #d7d0c2;
+
+  --sans: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Cormorant Garamond", Georgia, serif;
+
+  --wrap: 1120px;
+  --gutter: clamp(16px, 5vw, 48px);
+  --section: clamp(80px, 12vw, 160px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  margin: 0;
+  background: var(--calce);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: clamp(17px, 1.1vw + 12px, 19px);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-weight: 400; line-height: 1.1; margin: 0; }
+p { margin: 0 0 1em; }
+a { color: inherit; }
+b, strong { font-weight: 500; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bosco-soft);
+  margin-bottom: 1.4rem;
+}
+
+/* Segnaposto da completare: visibili ma discreti */
+.todo {
+  background: color-mix(in srgb, var(--paglia) 35%, transparent);
+  border-bottom: 1px dashed var(--paglia);
+  padding: 0 0.2em;
+  font-style: normal;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--calce) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s;
+}
+.site-header.scrolled { border-bottom-color: var(--line); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--bosco); }
+.brand-mark { width: 44px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.brand-mark path:last-child { stroke: var(--paglia); }
+.brand-name {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nav { display: flex; gap: 36px; align-items: center; }
+.nav a {
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--bosco);
+  position: relative;
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s;
+}
+.nav a:hover::after, .nav a:focus-visible::after { transform: scaleX(1); }
+.nav .nav-cta { border: 1px solid var(--bosco); padding: 8px 18px; border-radius: 999px; }
+.nav .nav-cta::after { display: none; }
+.nav .nav-cta:hover { background: var(--bosco); color: var(--calce); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  width: 40px; height: 40px;
+  padding: 10px 8px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.nav-toggle span { display: block; height: 1.5px; background: var(--bosco); transition: transform .3s; }
+.nav-toggle[aria-expanded="true"] span:first-child { transform: translateY(8.5px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:last-child { transform: translateY(-8.5px) rotate(-45deg); }
+
+/* ---------- Hero ---------- */
+.hero { padding-top: clamp(64px, 10vw, 140px); overflow: hidden; }
+.hero-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(3.4rem, 10vw, 8.5rem);
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  color: var(--bosco);
+  margin-bottom: 2rem;
+}
+.hero-lead { max-width: 30ch; font-size: clamp(1.05rem, 1.4vw, 1.25rem); color: var(--muted); }
+
+.hero-hills { margin: clamp(32px, 6vw, 72px) 0 0; position: relative; }
+.hero-hills svg { display: block; width: 100%; height: auto; overflow: visible; }
+.hill { fill: none; stroke-width: 3; stroke-linecap: round; }
+.hill-costa { stroke: var(--bosco); }
+.hill-bosco { stroke: var(--paglia); }
+.hill-meet { fill: var(--bosco); }
+
+.js .hill { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 2.4s cubic-bezier(.6,.1,.2,1) .3s forwards; }
+.js .hill-meet { opacity: 0; animation: fade .6s ease 2.5s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes fade { to { opacity: 1; } }
+
+.hills-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 20px;
+  padding-bottom: 48px;
+  font-size: 1rem;
+  color: var(--bosco);
+}
+.hills-labels span:last-child { text-align: right; }
+.hills-labels small {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Il nome ---------- */
+.name-equation { background: var(--carta); padding: clamp(56px, 8vw, 96px) 0; text-align: center; }
+.equation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.5em 0.9em;
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.6vw, 2.8rem);
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.equation b { color: var(--bosco); font-weight: 400; }
+.equation .op { color: var(--paglia); font-family: var(--sans); font-weight: 300; }
+.equation .result { color: var(--bosco); font-style: italic; }
+.equation-note { color: var(--muted); margin: 0; }
+
+/* ---------- Sezioni ---------- */
+.section { padding: var(--section) 0; }
+.section-head { margin-bottom: clamp(40px, 6vw, 80px); }
+.section-head h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  color: var(--bosco);
+}
+
+/* Storia */
+.timeline {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(32px, 4vw, 64px);
+}
+.timeline li { border-top: 1px solid var(--bosco); padding-top: 24px; }
+.step { display: block; font-size: 0.8rem; letter-spacing: 0.2em; color: var(--paglia); font-weight: 500; margin-bottom: 1.2rem; }
+.timeline h3 { font-size: 1.4rem; color: var(--bosco); margin-bottom: 1rem; }
+.timeline p { color: var(--muted); }
+
+/* Missione */
+.mission { background: var(--bosco); color: var(--calce); padding: var(--section) 0; }
+.mission-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: end; }
+.mission blockquote { margin: 0; }
+.mission blockquote p {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.8rem, 3.6vw, 2.9rem);
+  line-height: 1.2;
+  margin: 0;
+}
+.mission blockquote p::before { content: ""; display: block; width: 48px; height: 2px; background: var(--paglia); margin-bottom: 32px; }
+.mission-vision { color: color-mix(in srgb, var(--calce) 75%, transparent); margin: 0; }
+
+/* Le terre */
+.lands { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 48px); }
+.land { background: #fff; padding: clamp(28px, 4vw, 48px); border: 1px solid var(--line); }
+.land-line { width: 140px; height: 42px; fill: none; stroke: var(--bosco); stroke-width: 2; stroke-linecap: round; margin-bottom: 28px; }
+.land:last-child .land-line { stroke: var(--paglia); }
+.land-zone { font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+.land h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(2rem, 3.4vw, 2.6rem); color: var(--bosco); margin-bottom: 0.3rem; }
+.land h3 b { font-weight: 400; }
+.land-place { color: var(--bosco-soft); font-weight: 400; margin-bottom: 1.4rem; }
+.land p:last-child { color: var(--muted); margin: 0; }
+.lands-note { margin: 32px 0 0; color: var(--muted); font-size: 0.9rem; }
+
+/* Scavet */
+.wine { background: var(--bosco); color: var(--calce); padding: var(--section) 0; }
+.wine-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(40px, 8vw, 120px); align-items: center; }
+.wine-visual { display: flex; justify-content: center; }
+.bottle { width: clamp(120px, 18vw, 200px); height: auto; }
+.bottle-body { fill: #2c4a3b; stroke: color-mix(in srgb, var(--calce) 25%, transparent); stroke-width: 1; }
+.bottle-label { fill: var(--calce); }
+.bottle-mark { fill: none; stroke: var(--bosco); stroke-width: 1.4; stroke-linecap: round; }
+.bottle-text { font-family: var(--serif); font-style: italic; font-size: 15px; fill: var(--bosco); }
+.bottle-sub { font-family: var(--sans); font-size: 5px; letter-spacing: 2px; fill: var(--muted); }
+
+.wine .eyebrow { color: var(--paglia); }
+.wine-name { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(4rem, 10vw, 7.5rem); line-height: 0.9; margin-bottom: 0.6rem; }
+.wine-type { letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.82rem; color: var(--paglia); margin-bottom: 2.2rem; }
+.wine-story { font-size: clamp(1.05rem, 1.4vw, 1.2rem); max-width: 46ch; color: color-mix(in srgb, var(--calce) 85%, transparent); }
+.wine-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 2.4rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--calce) 20%, transparent);
+}
+.wine-facts div { padding: 18px 12px 18px 0; border-bottom: 1px solid color-mix(in srgb, var(--calce) 20%, transparent); }
+.wine-facts dt { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: color-mix(in srgb, var(--calce) 60%, transparent); }
+.wine-facts dd { margin: 4px 0 0; font-size: 1.15rem; }
+.wine .todo, .site-footer .todo { background: var(--paglia); color: var(--ink); }
+.wine-rule { font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: var(--paglia); margin: 0; }
+
+/* Valori */
+.values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.value { background: var(--calce); padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; }
+.value h3 { font-family: var(--serif); font-weight: 400; font-size: 1.9rem; color: var(--bosco); margin-bottom: 1rem; }
+.value p { color: var(--ink); }
+.value .value-proof { margin-top: auto; margin-bottom: 0; padding-top: 1.2rem; border-top: 1px solid var(--paglia); font-size: 0.88rem; color: var(--muted); }
+
+/* Frutta */
+.fruit { background: var(--carta); padding: clamp(64px, 9vw, 120px) 0; }
+.fruit-inner { max-width: 760px; text-align: center; }
+.fruit h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(2rem, 4.2vw, 3.2rem); color: var(--bosco); margin-bottom: 1.4rem; }
+.fruit p:last-child { color: var(--muted); margin: 0; }
+
+/* Contatti */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: clamp(24px, 3vw, 40px); align-items: start; }
+.contact-card { border-top: 1px solid var(--bosco); padding-top: 24px; }
+.contact-card h3 { font-size: 1.3rem; color: var(--bosco); margin-bottom: 0.8rem; }
+.contact-card p { color: var(--muted); }
+.button {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: var(--bosco);
+  color: var(--calce);
+  text-decoration: none;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  border: 1px solid var(--bosco);
+  transition: background .25s, color .25s;
+}
+.button:hover { background: transparent; color: var(--bosco); }
+.button-ghost { background: transparent; color: var(--bosco); }
+.button-ghost:hover { background: var(--bosco); color: var(--calce); }
+
+.contact-list { margin: 0; background: #fff; border: 1px solid var(--line); padding: 8px 28px; }
+.contact-list div { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.contact-list div:last-child { border-bottom: 0; }
+.contact-list dt { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.contact-list dd { margin: 2px 0 0; color: var(--bosco); overflow-wrap: anywhere; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--bosco); color: var(--calce); padding: 64px 0 40px; }
+.footer-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px; }
+.footer-brand { display: flex; align-items: center; gap: 14px; }
+.footer-legal { font-size: 0.85rem; color: color-mix(in srgb, var(--calce) 70%, transparent); text-align: right; margin: 0; }
+.footer-small {
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--calce) 50%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--calce) 15%, transparent);
+  padding-top: 24px;
+  margin: 16px 0 0;
+}
+
+/* ---------- Animazioni di comparsa ---------- */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+.js .reveal.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .js .hill { animation: none; stroke-dashoffset: 0; }
+  .js .hill-meet { animation: none; opacity: 1; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .values { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr 1fr; }
+  .contact-list { grid-column: 1 / -1; }
+}
+
+@media (max-width: 760px) {
+  .nav-toggle { display: flex; }
+  .nav {
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--calce);
+    border-bottom: 1px solid var(--line);
+    padding: 8px var(--gutter) 24px;
+    display: none;
+  }
+  .nav.open { display: flex; }
+  .nav a { padding: 14px 0; font-size: 1rem; width: 100%; border-bottom: 1px solid var(--line); }
+  .nav a::after { display: none; }
+  .nav .nav-cta { border: 0; border-radius: 0; padding: 14px 0; border-bottom: 0; }
+  .nav .nav-cta:hover { background: none; color: var(--bosco); }
+
+  .brand-name { font-size: 0.72rem; letter-spacing: 0.24em; }
+
+  .equation { flex-direction: column; align-items: center; gap: 0.2em; }
+  .hill { stroke-width: 5; }
+
+  .timeline, .mission-grid, .lands, .wine-grid, .contact-grid, .footer-inner { grid-template-columns: 1fr; }
+  .wine-visual { order: -1; }
+  .wine-facts { grid-template-columns: repeat(2, 1fr); }
+  .values { grid-template-columns: 1fr; }
+  .footer-legal { text-align: left; }
+  .hills-labels { font-size: 0.9rem; }
+}
