@@ -38,20 +38,20 @@ svg = f'''<figure class="wine-visual reveal">
               <clipPath id="label-clip"><polygon points="{label_poly}" /></clipPath>
               <image id="label-img" href="assets/scavet-etichetta.jpg" width="1063" height="1300" />
               <linearGradient id="glass" x1="0" x2="1">
-                <stop offset="0" stop-color="#07100a" />
-                <stop offset=".1" stop-color="#16301a" />
-                <stop offset=".24" stop-color="#2c5530" />
-                <stop offset=".34" stop-color="#3e6e3c" />
-                <stop offset=".5" stop-color="#244a28" />
-                <stop offset=".78" stop-color="#173a1c" />
-                <stop offset=".93" stop-color="#0c1f0f" />
-                <stop offset="1" stop-color="#050b06" />
+                <stop offset="0" stop-color="#020402" />
+                <stop offset=".1" stop-color="#071009" />
+                <stop offset=".24" stop-color="#11210f" />
+                <stop offset=".34" stop-color="#1a2e17" />
+                <stop offset=".5" stop-color="#0e1b0d" />
+                <stop offset=".78" stop-color="#091409" />
+                <stop offset=".93" stop-color="#040905" />
+                <stop offset="1" stop-color="#010201" />
               </linearGradient>
               <linearGradient id="glass-depth" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#9fd39a" stop-opacity=".18" />
+                <stop offset="0" stop-color="#7fae78" stop-opacity=".1" />
                 <stop offset=".35" stop-color="#000" stop-opacity="0" />
-                <stop offset=".9" stop-color="#000" stop-opacity=".25" />
-                <stop offset="1" stop-color="#6fae66" stop-opacity=".35" />
+                <stop offset=".9" stop-color="#000" stop-opacity=".3" />
+                <stop offset="1" stop-color="#4f7a48" stop-opacity=".2" />
               </linearGradient>
               <linearGradient id="capsule" x1="0" x2="1">
                 <stop offset="0" stop-color="#083d15" />
@@ -91,14 +91,14 @@ svg = f'''<figure class="wine-visual reveal">
               <!-- riflessi lunghi: finestra a sinistra, controluce a destra -->
               <path d="M24.5 136 L29 298" stroke="#e9f5e4" stroke-opacity=".55" stroke-width="3.2" stroke-linecap="round" filter="url(#soft)" />
               <path d="M26 140 L30 292" stroke="#fff" stroke-opacity=".75" stroke-width=".9" stroke-linecap="round" />
-              <path d="M78.5 140 L74.5 290" stroke="#bfe6b8" stroke-opacity=".3" stroke-width="2" stroke-linecap="round" filter="url(#soft)" />
-              <path d="M38 112 C29 116 21 122 18.5 132" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" filter="url(#soft)" />
-              <path d="M12.5 140 L18.6 298" stroke="#8fd08a" stroke-opacity=".35" stroke-width="1.4" filter="url(#soft)" />
-              <path d="M87.5 140 L81.4 298" stroke="#8fd08a" stroke-opacity=".3" stroke-width="1.4" filter="url(#soft)" />
+              <path d="M78.5 140 L74.5 290" stroke="#bfe6b8" stroke-opacity=".18" stroke-width="2" stroke-linecap="round" filter="url(#soft)" />
+              <path d="M38 112 C29 116 21 122 18.5 132" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-linecap="round" filter="url(#soft)" />
+              <path d="M12.5 140 L18.6 298" stroke="#6f9f68" stroke-opacity=".22" stroke-width="1.4" filter="url(#soft)" />
+              <path d="M87.5 140 L81.4 298" stroke="#6f9f68" stroke-opacity=".18" stroke-width="1.4" filter="url(#soft)" />
               <!-- fondo spesso del vetro -->
-              <ellipse cx="50" cy="301" rx="31" ry="4.5" fill="#6fae66" opacity=".35" filter="url(#softer)" />
+              <ellipse cx="50" cy="301" rx="31" ry="4.5" fill="#4f7a48" opacity=".25" filter="url(#softer)" />
             </g>
-            <use href="#bottle-shape" fill="none" stroke="#a9dca2" stroke-opacity=".25" stroke-width=".45" />
+            <use href="#bottle-shape" fill="none" stroke="#a9dca2" stroke-opacity=".18" stroke-width=".45" />
 
             <!-- etichetta conica -->
             <g clip-path="url(#label-clip)">
