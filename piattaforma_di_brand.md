@@ -43,7 +43,7 @@ Quattro valori, ciascuno legato a un fatto concreto: così non restano parole vu
 | --- | --- | --- |
 | Radici | Lavoriamo terre di famiglia, non comprate | Vigneti di proprietà, ereditati dai nonni |
 | Unione | Due terre e due fratelli diventano una cosa sola | Il nome Costa del Bosco |
-| Mano | Poco, fatto bene, fatto da noi | Vendemmia a mano, 1.000 bottiglie di Scavet |
+| Mano | Poco, fatto bene, fatto da noi | Vendemmia a mano, 980 bottiglie di Scavet |
 | Sguardo nuovo | Una generazione giovane, un linguaggio contemporaneo | Design minimale, comunicazione diretta |
 
 ## Posizionamento e pubblico
@@ -64,20 +64,20 @@ Parliamo come scriviamo l'etichetta: poche parole, tutte vere. Prima persona plu
 
 | Sì | No |
 | --- | --- |
-| "Vendemmiato a mano, 1.000 bottiglie" | "Prodotto con passione e dedizione" |
+| "Vendemmiato a mano, 980 bottiglie" | "Prodotto con passione e dedizione" |
 | "La vigna dei nonni" | "Tradizione secolare" |
 | "Profuma di fiori bianchi e mela" | "Un'esperienza sensoriale unica" |
 | Tono caldo ma asciutto | Tono enfatico o pomposo |
 
 ## Il primo vino: Scavet
 
-Scavet è un Cortese Colli Tortonesi DOC, prima annata, 1.000 bottiglie da un'unica vigna vendemmiata a mano. Il vino porta il nome della vigna: questo stabilisce una regola per tutta la gamma futura (ogni vino = una vigna).
+Scavet è un Cortese Colli Tortonesi DOC, prima annata, 980 bottiglie da un'unica vigna vendemmiata a mano. Il vino porta il nome della vigna: questo stabilisce una regola per tutta la gamma futura (ogni vino = una vigna).
 
 Il nome viene dal dialetto *scavetto*: un piccolo appezzamento dove nostro nonno ha fatto lo scasso con l'aratro, senza scavatore, per piantare la vigna. È una vigna vecchia (età da aggiungere). Questo racconto è il cuore dell'etichetta: fatica, mani, un pezzo di terra piccolo.
 
 Bozza del racconto per la retroetichetta (circa 50 parole, da rifinire quando avremo i dati tecnici):
 
-> In dialetto, *scavet* è un piccolo scasso. È la vigna che nostro nonno ha preparato con l'aratro, senza scavatore, su un fazzoletto di terra. Oggi la vendemmiamo noi, a mano. Cortese, 1.000 bottiglie: il nostro primo vino.
+> In dialetto, *scavet* è un piccolo scasso. È la vigna che nostro nonno ha preparato con l'aratro, senza scavatore, su un fazzoletto di terra. Oggi la vendemmiamo noi, a mano. Cortese, 980 bottiglie: il nostro primo vino.
 
 Le indicazioni obbligatorie (DOC, grado alcolico, volume, solfiti, lotto, imbottigliatore, ingredienti e valori nutrizionali, smaltimento) le impostiamo nella fase dedicata all'etichetta.
 

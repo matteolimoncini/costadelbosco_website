@@ -71,16 +71,19 @@ header .wrap { padding-block: clamp(40px, 7vw, 72px) 28px; display: grid; gap: 1
 header h1 { font-family: var(--f-deco); font-size: clamp(2.2rem, 6vw, 3.6rem); letter-spacing: .06em; }
 header p { color: var(--muted); max-width: 64ch; }
 
-/* fronte e retro alla stessa scala: 90 mm e 110 mm di larghezza */
-.bench { display: grid; grid-template-columns: 90fr 110fr; gap: clamp(16px, 4vw, 48px); align-items: end; padding-block: 12px 48px; }
+/* fronte e retri alla stessa scala: 90, 90 e 110 mm di larghezza */
+.bench { display: grid; grid-template-columns: 90fr 90fr 110fr; gap: clamp(16px, 4vw, 48px); align-items: end; padding-block: 12px 48px; }
 .bench figure { margin: 0; display: grid; gap: 12px; min-width: 0; }
 .bench .item { box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 14px 34px -14px rgba(0,0,0,.4); line-height: 0; }
 .bench img { display: block; width: 100%; height: auto; aspect-ratio: 90 / 110; }
-.bench svg { display: block; width: 100%; height: auto; aspect-ratio: 110 / 80; }
+.bench svg { display: block; width: 100%; height: auto; }
+.bench .v svg { aspect-ratio: 90 / 110; }
+.bench .o svg { aspect-ratio: 110 / 80; }
 .bench figcaption { display: flex; justify-content: space-between; gap: 12px; font-size: .8rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
 .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; font-size: .9rem; color: var(--muted); padding-bottom: 8px; }
 .legend i { display: inline-block; width: 12px; height: 12px; background: var(--arancio); vertical-align: -1px; margin-right: 6px; }
-@media (max-width: 680px) { .bench { grid-template-columns: 1fr; } .bench figure:first-child { max-width: 82%; } }
+@media (max-width: 980px) { .bench { grid-template-columns: 1fr 1fr; } .bench figure.o { grid-column: 1 / -1; max-width: 640px; } }
+@media (max-width: 600px) { .bench { grid-template-columns: 1fr; } .bench figure:not(.o) { max-width: 82%; } }
 
 section { border-top: 1px solid var(--line); }
 section > .wrap { padding-block: clamp(40px, 7vw, 72px); display: grid; gap: 28px; }
@@ -136,20 +139,91 @@ footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem;
 
 <header>
   <div class="wrap">
-    <div class="label">Costa del Bosco · Scavet · bozza 2</div>
+    <div class="label">Costa del Bosco · Scavet · bozza 3</div>
     <h1>Controetichetta Scavet</h1>
-    <p>Formato orizzontale, con i dati del certificato di idoneità e del rapporto di prova. Sotto c'è la verifica punto per punto sul disciplinare della DOC Colli Tortonesi e sulle norme di etichettatura del vino.</p>
+    <p>Due versioni con lo stesso testo: una verticale, gemella del fronte, e una orizzontale. I dati vengono dal certificato di idoneità e dal rapporto di prova. Sotto c'è la verifica punto per punto sul disciplinare della DOC Colli Tortonesi e sulle norme di etichettatura del vino, valida per tutte e due.</p>
   </div>
 </header>
 
 <div class="wrap">
-  <div class="legend"><span><i></i>Dato ancora da completare</span><span>Fronte 90 × 110 mm, retro proposto 110 × 80 mm, in scala tra loro</span></div>
+  <div class="legend"><span><i></i>Dato ancora da completare</span><span>Fronte 90 × 110 mm, retro verticale 90 × 110 mm, retro orizzontale 110 × 80 mm, tutti in scala tra loro</span></div>
   <div class="bench">
     <figure>
       <div class="item"><img src="fronte.jpg" alt="Etichetta frontale di Scavet: mappa della vigna con cornice verde e il nome Costa del Bosco"></div>
       <figcaption><span>Fronte</span><span>Esistente</span></figcaption>
     </figure>
-    <figure>
+    <figure class="v">
+      <div class="item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 110" width="90mm" height="110mm" class="retro" role="img" aria-label="Controetichetta di Scavet, formato verticale">
+  <style>
+    .deco { font-family: Federo, "Poiret One", "Futura", sans-serif; }
+    .t { font-family: Jost, "Futura", "Century Gothic", sans-serif; fill: #1D1D1B; }
+    .ph { fill: #E06A0E; }
+    .w { fill: #FFFFFF; }
+    .wph { fill: #F2DA4A; }
+  </style>
+
+  <!-- cornice e campo con le stesse misure del fronte -->
+  <rect width="90" height="110" fill="#1B9238"/>
+  <rect x="10.75" y="4.65" width="68.5" height="83.75" fill="#FFFFFF" stroke="#B18D13" stroke-width=".34"/>
+
+  <!-- nome del vino e denominazione -->
+  <text class="deco" x="45" y="13.2" font-size="7.2" text-anchor="middle" letter-spacing=".5" fill="#111111">SCAVET</text>
+  <text class="t" x="45" y="17.6" font-size="2.5" font-weight="500" text-anchor="middle" letter-spacing=".35">COLLI TORTONESI CORTESE</text>
+  <text class="t" x="45" y="20.6" font-size="2.1" font-weight="400" text-anchor="middle" letter-spacing=".1">DENOMINAZIONE DI ORIGINE CONTROLLATA</text>
+  <line x1="40" y1="23.4" x2="50" y2="23.4" stroke="#B18D13" stroke-width=".3"/>
+
+  <!-- racconto -->
+  <g class="t" font-size="2.4" font-weight="300" text-anchor="middle">
+    <text x="45" y="28.2">In dialetto, <tspan font-style="italic">scavet</tspan> è un piccolo scasso:</text>
+    <text x="45" y="31.6">il pezzo di terra che nostro nonno ha</text>
+    <text x="45" y="35">preparato con l'aratro, senza scavatore.</text>
+    <text x="45" y="38.4">Oggi l'uva la raccogliamo noi, a mano.</text>
+    <text x="45" y="41.8">Cortese, 980 bottiglie: il nostro primo vino.</text>
+  </g>
+  <text class="t" x="45" y="45.8" font-size="2.4" font-style="italic" font-weight="400" text-anchor="middle">Matteo e Sara</text>
+
+  <!-- annata e numero della bottiglia -->
+  <line x1="15" y1="48.6" x2="75" y2="48.6" stroke="#625D26" stroke-width=".18"/>
+  <g class="t" text-anchor="middle">
+    <text x="30" y="51.8" font-size="1.6" font-weight="500" letter-spacing=".3">VENDEMMIA</text>
+    <text x="60" y="51.8" font-size="1.6" font-weight="500" letter-spacing=".3">BOTTIGLIA</text>
+    <text x="30" y="55" font-size="2.6" font-weight="300">2025, a mano</text>
+    <text x="60" y="55" font-size="2.6" font-weight="300">N° <tspan class="ph">___</tspan> di 980</text>
+  </g>
+  <line x1="15" y1="57.4" x2="75" y2="57.4" stroke="#625D26" stroke-width=".18"/>
+
+  <!-- grado e volume, nello stesso campo visivo della denominazione -->
+  <text class="t" x="15" y="63.6" font-size="4.6" font-weight="400">12,5% vol</text>
+  <text class="t" x="75" y="63.8" font-size="5.8" font-weight="400" text-anchor="end">750 ml</text>
+
+  <g class="t" font-size="2.6" font-weight="300">
+    <text x="15" y="68.4" font-weight="500" font-size="2.7">Contiene solfiti</text>
+    <text x="15" y="71.7">Imbottigliato per Costa del Bosco</text>
+    <text x="15" y="74.9">S.S. Soc. Agr., Avolasca – Italia</text>
+    <text x="15" y="78.1">da <tspan class="ph">codice ICQRF</tspan> · Lotto L. 15326</text>
+    <text x="15" y="81.3">E (100 ml) = 300 kJ / 72 kcal</text>
+    <text x="15" y="84.5">Prodotto in Italia</text>
+  </g>
+
+  <!-- QR per ingredienti e dichiarazione nutrizionale -->
+  <rect x="63.5" y="66.4" width="11.5" height="11.5" fill="none" stroke="#E06A0E" stroke-width=".25" stroke-dasharray=".8 .6"/>
+  <text class="t ph" x="69.25" y="72.9" font-size="2" font-weight="500" text-anchor="middle">QR</text>
+  <text class="t" x="75" y="81.3" font-size="2.6" font-weight="400" text-anchor="end">Ingredienti</text>
+
+  <!-- fascia verde, come sul fronte -->
+  <text class="deco w" x="45" y="96" font-size="4.8" text-anchor="middle" letter-spacing=".15">COSTA DEL BOSCO</text>
+  <circle cx="42.55" cy="99.4" r=".85" fill="#EB7A1C"/>
+  <circle cx="45" cy="99.4" r=".85" fill="#B58C0C"/>
+  <circle cx="47.45" cy="99.4" r=".85" fill="#EAD137"/>
+  <g class="t w" font-size="1.6" font-weight="400" text-anchor="middle">
+    <text x="45" y="104">Bottiglia GL 71 · Tappo FOR 51 · Capsula <tspan class="wph">___</tspan></text>
+    <text x="45" y="106.6">Raccolta vetro. Verifica le disposizioni del tuo Comune.</text>
+  </g>
+</svg>
+</div>
+      <figcaption><span>Retro A · verticale</span><span>90 × 110 mm</span></figcaption>
+    </figure>
+    <figure class="o">
       <div class="item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 80" width="110mm" height="80mm" class="retro" role="img" aria-label="Controetichetta di Scavet, formato orizzontale">
   <style>
     .deco { font-family: Federo, "Poiret One", "Futura", sans-serif; }
@@ -159,67 +233,59 @@ footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem;
     .wph { fill: #F2DA4A; }
   </style>
 
-  <!-- cornice verde e campo bianco con filo oro, come il fronte -->
+  <!-- cornice verde, campo bianco con filo oro, fascia in basso come il fronte -->
   <rect width="110" height="80" fill="#1B9238"/>
-  <rect x="6" y="4" width="98" height="62" fill="#FFFFFF" stroke="#B18D13" stroke-width=".34"/>
+  <rect x="6" y="4" width="98" height="60" fill="#FFFFFF" stroke="#B18D13" stroke-width=".34"/>
 
-  <!-- colonna sinistra: nome, denominazione, racconto -->
-  <text class="deco" x="11" y="13.6" font-size="6.8" letter-spacing=".5" fill="#111111">SCAVET</text>
-  <text class="t" x="11" y="18.4" font-size="2.5" font-weight="500" letter-spacing=".25">COLLI TORTONESI CORTESE</text>
-  <text class="t" x="11" y="21.5" font-size="2" font-weight="400" letter-spacing=".05">DENOMINAZIONE DI ORIGINE CONTROLLATA</text>
-  <line x1="11" y1="24.6" x2="21" y2="24.6" stroke="#B18D13" stroke-width=".3"/>
+  <!-- intestazione centrata su tutta la larghezza, come il nome sul fronte -->
+  <text class="deco" x="55" y="13" font-size="7" text-anchor="middle" letter-spacing=".5" fill="#111111">SCAVET</text>
+  <text class="t" x="55" y="17.4" font-size="2.5" font-weight="500" text-anchor="middle" letter-spacing=".35">COLLI TORTONESI CORTESE</text>
+  <text class="t" x="55" y="20.3" font-size="2.1" font-weight="400" text-anchor="middle" letter-spacing=".1">DENOMINAZIONE DI ORIGINE CONTROLLATA</text>
+  <line x1="50" y1="22.6" x2="60" y2="22.6" stroke="#B18D13" stroke-width=".3"/>
 
-  <g class="t" font-size="2.3" font-weight="300">
-    <text x="11" y="29.2">In dialetto, <tspan font-style="italic">scavet</tspan> è un piccolo scasso:</text>
-    <text x="11" y="32.4">il pezzo di terra che nostro nonno ha</text>
-    <text x="11" y="35.6">preparato con l'aratro, senza scavatore.</text>
-    <text x="11" y="38.8">Oggi l'uva la raccogliamo noi, a mano.</text>
-    <text x="11" y="42">Cortese, 980 bottiglie:</text>
-    <text x="11" y="45.2">il nostro primo vino.</text>
+  <!-- sinistra: il racconto -->
+  <g class="t" font-size="2.25" font-weight="300">
+    <text x="11" y="28.4">In dialetto, <tspan font-style="italic">scavet</tspan> è un piccolo</text>
+    <text x="11" y="31.4">scasso: il pezzo di terra che</text>
+    <text x="11" y="34.4">nostro nonno ha preparato con</text>
+    <text x="11" y="37.4">l'aratro, senza scavatore. Oggi</text>
+    <text x="11" y="40.4">l'uva la raccogliamo noi, a mano.</text>
+    <text x="11" y="43.4">Cortese, 980 bottiglie:</text>
+    <text x="11" y="46.4">il nostro primo vino.</text>
   </g>
-  <text class="t" x="11" y="49.2" font-size="2.3" font-style="italic" font-weight="400">Matteo e Sara</text>
+  <text class="t" x="11" y="50" font-size="2.25" font-style="italic" font-weight="400">Matteo e Sara</text>
 
-  <line x1="63.5" y1="9" x2="63.5" y2="49.5" stroke="#B18D13" stroke-width=".2"/>
+  <line x1="53" y1="26.4" x2="53" y2="50.4" stroke="#B18D13" stroke-width=".2"/>
 
-  <!-- colonna destra: volume e grado nello stesso campo visivo della denominazione -->
-  <text class="t" x="67" y="15.8" font-size="5.8" font-weight="400">750 ml</text>
-  <text class="t" x="67" y="22.2" font-size="4.4" font-weight="400">12,5% vol</text>
+  <!-- destra: volume e grado nello stesso campo visivo della denominazione, poi i dati della bottiglia -->
+  <text class="t" x="56" y="31.6" font-size="5.8" font-weight="400">750 ml</text>
+  <text class="t" x="99" y="31.6" font-size="4.4" font-weight="400" text-anchor="end">12,5% vol</text>
   <g class="t" font-size="2.7" font-weight="300">
-    <text x="67" y="27.6" font-weight="500">Contiene solfiti</text>
-    <text x="67" y="31.2">Vendemmia 2025</text>
-    <text x="67" y="34.8">Bottiglia N° <tspan class="ph">___</tspan>/980</text>
+    <text x="56" y="37.4" font-weight="500">Contiene solfiti</text>
+    <text x="56" y="41">Vendemmia 2025</text>
+    <text x="56" y="44.6">Bottiglia N° <tspan class="ph">___</tspan>/980</text>
+  </g>
+  <rect x="88" y="35.2" width="11" height="11" fill="none" stroke="#E06A0E" stroke-width=".25" stroke-dasharray=".8 .6"/>
+  <text class="t ph" x="93.5" y="41.5" font-size="2" font-weight="500" text-anchor="middle">QR</text>
+  <text class="t" x="99" y="49.6" font-size="2.6" font-weight="400" text-anchor="end">Ingredienti</text>
+
+  <!-- in basso, centrato: imbottigliatore, lotto, energia -->
+  <line x1="11" y1="52.6" x2="99" y2="52.6" stroke="#625D26" stroke-width=".18"/>
+  <g class="t" font-size="2.6" font-weight="300" text-anchor="middle">
+    <text x="55" y="56.2">Imbottigliato per Costa del Bosco S.S. Soc. Agr., Avolasca – Italia</text>
+    <text x="55" y="59.2">da <tspan class="ph">codice ICQRF</tspan> · Lotto L. 15326 · Prodotto in Italia</text>
+    <text x="55" y="62.2">E (100 ml) = 300 kJ / 72 kcal</text>
   </g>
 
-  <!-- QR per ingredienti e dichiarazione nutrizionale -->
-  <rect x="67" y="38" width="11.5" height="11.5" fill="none" stroke="#E06A0E" stroke-width=".25" stroke-dasharray=".8 .6"/>
-  <text class="t ph" x="72.75" y="44.5" font-size="2" font-weight="500" text-anchor="middle">QR</text>
-  <g class="t" font-size="2.6" font-weight="400">
-    <text x="80.5" y="42.2">Ingredienti</text>
-    <text x="80.5" y="45.2">e valori</text>
-    <text x="80.5" y="48.2">nutrizionali</text>
-  </g>
-
-  <!-- striscia in basso: imbottigliatore, lotto, energia -->
-  <line x1="11" y1="52.4" x2="99" y2="52.4" stroke="#625D26" stroke-width=".18"/>
-  <g class="t" font-size="2.6" font-weight="300">
-    <text x="11" y="56.6">Imbottigliato per Costa del Bosco S.S. Soc. Agr., <tspan class="ph">Comune</tspan> – Italia</text>
-    <text x="11" y="59.7">da Az. Agr. Mandirola Enrico, Casasco – Italia · Lotto L. 15326</text>
-    <text x="11" y="62.8">E (100 ml) = 300 kJ / 72 kcal · Prodotto in Italia</text>
-  </g>
-
-  <!-- fascia verde: nome e tre punti come il fronte, a destra lo smaltimento -->
-  <text class="deco w" x="11" y="74.6" font-size="4.4" letter-spacing=".15">COSTA DEL BOSCO</text>
-  <circle cx="59.5" cy="73.1" r=".75" fill="#EB7A1C"/>
-  <circle cx="62" cy="73.1" r=".75" fill="#B58C0C"/>
-  <circle cx="64.5" cy="73.1" r=".75" fill="#EAD137"/>
-  <g class="t w" font-size="1.5" font-weight="400" text-anchor="end">
-    <text x="99" y="71">Bottiglia GL 71 · Tappo <tspan class="wph">___</tspan> · Capsula <tspan class="wph">___</tspan></text>
-    <text x="99" y="73.4">Raccolta vetro. Verifica le disposizioni</text>
-    <text x="99" y="75.8">del tuo Comune.</text>
-  </g>
+  <!-- fascia verde: nome e tre punti centrati come sul fronte, sotto lo smaltimento -->
+  <text class="deco w" x="55" y="70.8" font-size="4.6" text-anchor="middle" letter-spacing=".15">COSTA DEL BOSCO</text>
+  <circle cx="52.55" cy="73.9" r=".8" fill="#EB7A1C"/>
+  <circle cx="55" cy="73.9" r=".8" fill="#B58C0C"/>
+  <circle cx="57.45" cy="73.9" r=".8" fill="#EAD137"/>
+  <text class="t w" x="55" y="77.4" font-size="1.45" font-weight="400" text-anchor="middle">Bottiglia GL 71 · Tappo FOR 51 · Capsula <tspan class="wph">___</tspan> · Raccolta vetro. Verifica le disposizioni del tuo Comune.</text>
 </svg>
 </div>
-      <figcaption><span>Retro</span><span>Proposta · 110 × 80 mm</span></figcaption>
+      <figcaption><span>Retro B · orizzontale</span><span>110 × 80 mm</span></figcaption>
     </figure>
   </div>
 </div>
@@ -282,9 +348,9 @@ footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem;
         <span class="pill todo-p">Da completare</span>
         <div>
           <h3>Imbottigliatore</h3>
-          <p>Il vino è imbottigliato in conto lavoro dall'Azienda Agricola Mandirola Enrico a Casasco, per Costa del Bosco S.S. Società Agricola. La forma corretta è «Imbottigliato per … da …». Manca il comune della sede di Costa del Bosco. In alternativa al nome di Mandirola si può usare il suo codice ICQRF.</p>
+          <p>Il vino è imbottigliato in conto lavoro da un'altra cantina per Costa del Bosco S.S. Società Agricola. Al posto del nome di quella cantina si usa il suo codice imbottigliatore ICQRF: è ammesso perché in etichetta c'è per esteso il vostro nome, cioè quello di chi mette il vino in commercio. La riga diventa «Imbottigliato per Costa del Bosco … – Italia da [codice]».</p><p>Il comune è Avolasca, dalla sede legale registrata (Frazione Costa Giuliana 6, REA AL-314167). Manca il codice: lo ha la cantina che imbottiglia e non è il numero 00291 stampato sul certificato, che è un riferimento di Valoritalia. Chiedete anche come preferiscono che sia scritto.</p>
         </div>
-        <div class="src"><b>Reg. UE 2019/33 art. 46</b>Nome e comune dell'imbottigliatore, con «per» se l'imbottigliamento è fatto da terzi</div>
+        <div class="src"><b>Reg. UE 2019/33 art. 46</b>Imbottigliatore per nome o per codice, con «per» se l'imbottigliamento è fatto da terzi</div>
       </div>
 
       <div class="check">
@@ -299,8 +365,8 @@ footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem;
       <div class="check">
         <span class="pill todo-p">Da completare</span>
         <div>
-          <h3>Codici dei materiali di tappo e capsula</h3>
-          <p>Per la bottiglia di vetro il codice è GL 71. Mancano tappo (sughero FOR 51, vite in alluminio ALU 41…) e capsula, se c'è.</p>
+          <h3>Codice del materiale della capsula</h3>
+          <p>Bottiglia di vetro GL 71 e tappo di sughero FOR 51 sono in etichetta. Manca la capsula: il codice dipende dal materiale, per esempio PVC 3 per la plastica o ALU 41 per l'alluminio. Lo trovate sulla scheda tecnica del fornitore.</p>
         </div>
         <div class="src"><b>D.Lgs. 116/2020</b>Etichettatura ambientale degli imballaggi</div>
       </div>
@@ -368,13 +434,12 @@ footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem;
       <p>Spuntate le voci man mano: la spunta resta solo in questo browser.</p>
     </div>
     <ul class="todo" id="todo">
-      <li><input type="checkbox" id="t1"><label for="t1"><b>Comune della sede</b> di Costa del Bosco S.S., per la riga dell'imbottigliatore.</label><span class="who">Voi</span></li>
-      <li><input type="checkbox" id="t2"><label for="t2"><b>Nome o codice ICQRF</b> di Mandirola: decidere quale dei due stampare.</label><span class="who">Voi</span></li>
+            <li><input type="checkbox" id="t2"><label for="t2"><b>Codice ICQRF</b> della cantina che imbottiglia, nella forma esatta da stampare.</label><span class="who">Cantina</span></li>
       <li><input type="checkbox" id="t3"><label for="t3"><b>Ingredienti e additivi</b> usati in cantina, compresi i chiarificanti.</label><span class="who">Enologo</span></li>
       <li><input type="checkbox" id="t4"><label for="t4"><b>Pagina e-label</b> e QR che la apre.</label><span class="who">Voi</span></li>
-      <li><input type="checkbox" id="t5"><label for="t5"><b>Tappo e capsula</b>: materiali, per i codici ambientali.</label><span class="who">Voi</span></li>
+      <li><input type="checkbox" id="t5"><label for="t5"><b>Materiale della capsula</b>, per il codice ambientale.</label><span class="who">Fornitore</span></li>
       <li><input type="checkbox" id="t6"><label for="t6"><b>Numerazione</b>: tenerla o no, e come stampare i numeri da 1 a 980.</label><span class="who">Tipografia</span></li>
-      <li><input type="checkbox" id="t7"><label for="t7"><b>Misure reali</b> di fronte e retro, e forma della bottiglia.</label><span class="who">Tipografia</span></li>
+      <li><input type="checkbox" id="t7"><label for="t7"><b>Versione e misure</b>: scegliere verticale o orizzontale e confermare le misure con la forma della bottiglia.</label><span class="who">Voi e tipografia</span></li>
       <li><input type="checkbox" id="t8"><label for="t8"><b>Carattere del fronte</b>: quello qui (Federo) è provvisorio. Il grafico può riconoscerlo dal file originale del fronte.</label><span class="who">Grafico</span></li>
       <li><input type="checkbox" id="t9"><label for="t9"><b>Approvazione del testo</b> da parte di Valoritalia o del consorzio.</label><span class="who">Valoritalia</span></li>
     </ul>
@@ -393,13 +458,13 @@ footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem;
       <li><a href="https://www.regione.piemonte.it/governo/bollettino/abbonati/2024/41/attach/aa_aa_regione%20piemonte%20-%20comunicato_2024-10-08_91860.pdf" target="_blank" rel="noopener">Proposta di modifica del disciplinare</a>, Bollettino Ufficiale Regione Piemonte n. 41 del 10/10/2024.</li>
       <li>Reg. UE 2019/33, Reg. UE 1169/2011, Reg. UE 2021/2117, D.Lgs. 116/2020.</li>
     </ul>
-    <p class="note">Il file vettoriale è <code>etichetta/controetichetta_scavet.svg</code>, in millimetri reali. Per la stampa il grafico deve aggiungere 2 mm di abbondanza e convertire i testi in tracciati.</p>
+    <p class="note">I file vettoriali sono <code>etichetta/controetichetta_scavet_verticale.svg</code> e <code>etichetta/controetichetta_scavet_orizzontale.svg</code>, in millimetri reali. Per la stampa il grafico deve aggiungere 2 mm di abbondanza e convertire i testi in tracciati.</p>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="wrap">Costa del Bosco · controetichetta di Scavet · bozza 2 del 31 ottobre 2026</div>
+  <div class="wrap">Costa del Bosco · controetichetta di Scavet · bozza 3 del 31 ottobre 2026</div>
 </footer>
 
 <script>

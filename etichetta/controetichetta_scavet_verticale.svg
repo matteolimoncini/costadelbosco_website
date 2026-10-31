@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 110" width="90mm" height="110mm" class="retro" role="img" aria-label="Controetichetta di Scavet, formato verticale">
+  <style>
+    .deco { font-family: Federo, "Poiret One", "Futura", sans-serif; }
+    .t { font-family: Jost, "Futura", "Century Gothic", sans-serif; fill: #1D1D1B; }
+    .ph { fill: #E06A0E; }
+    .w { fill: #FFFFFF; }
+    .wph { fill: #F2DA4A; }
+  </style>
+
+  <!-- cornice e campo con le stesse misure del fronte -->
+  <rect width="90" height="110" fill="#1B9238"/>
+  <rect x="10.75" y="4.65" width="68.5" height="83.75" fill="#FFFFFF" stroke="#B18D13" stroke-width=".34"/>
+
+  <!-- nome del vino e denominazione -->
+  <text class="deco" x="45" y="13.2" font-size="7.2" text-anchor="middle" letter-spacing=".5" fill="#111111">SCAVET</text>
+  <text class="t" x="45" y="17.6" font-size="2.5" font-weight="500" text-anchor="middle" letter-spacing=".35">COLLI TORTONESI CORTESE</text>
+  <text class="t" x="45" y="20.6" font-size="2.1" font-weight="400" text-anchor="middle" letter-spacing=".1">DENOMINAZIONE DI ORIGINE CONTROLLATA</text>
+  <line x1="40" y1="23.4" x2="50" y2="23.4" stroke="#B18D13" stroke-width=".3"/>
+
+  <!-- racconto -->
+  <g class="t" font-size="2.4" font-weight="300" text-anchor="middle">
+    <text x="45" y="28.2">In dialetto, <tspan font-style="italic">scavet</tspan> è un piccolo scasso:</text>
+    <text x="45" y="31.6">il pezzo di terra che nostro nonno ha</text>
+    <text x="45" y="35">preparato con l'aratro, senza scavatore.</text>
+    <text x="45" y="38.4">Oggi l'uva la raccogliamo noi, a mano.</text>
+    <text x="45" y="41.8">Cortese, 980 bottiglie: il nostro primo vino.</text>
+  </g>
+  <text class="t" x="45" y="45.8" font-size="2.4" font-style="italic" font-weight="400" text-anchor="middle">Matteo e Sara</text>
+
+  <!-- annata e numero della bottiglia -->
+  <line x1="15" y1="48.6" x2="75" y2="48.6" stroke="#625D26" stroke-width=".18"/>
+  <g class="t" text-anchor="middle">
+    <text x="30" y="51.8" font-size="1.6" font-weight="500" letter-spacing=".3">VENDEMMIA</text>
+    <text x="60" y="51.8" font-size="1.6" font-weight="500" letter-spacing=".3">BOTTIGLIA</text>
+    <text x="30" y="55" font-size="2.6" font-weight="300">2025, a mano</text>
+    <text x="60" y="55" font-size="2.6" font-weight="300">N° <tspan class="ph">___</tspan> di 980</text>
+  </g>
+  <line x1="15" y1="57.4" x2="75" y2="57.4" stroke="#625D26" stroke-width=".18"/>
+
+  <!-- grado e volume, nello stesso campo visivo della denominazione -->
+  <text class="t" x="15" y="63.6" font-size="4.6" font-weight="400">12,5% vol</text>
+  <text class="t" x="75" y="63.8" font-size="5.8" font-weight="400" text-anchor="end">750 ml</text>
+
+  <g class="t" font-size="2.6" font-weight="300">
+    <text x="15" y="68.4" font-weight="500" font-size="2.7">Contiene solfiti</text>
+    <text x="15" y="71.7">Imbottigliato per Costa del Bosco</text>
+    <text x="15" y="74.9">S.S. Soc. Agr., Avolasca – Italia</text>
+    <text x="15" y="78.1">da <tspan class="ph">codice ICQRF</tspan> · Lotto L. 15326</text>
+    <text x="15" y="81.3">E (100 ml) = 300 kJ / 72 kcal</text>
+    <text x="15" y="84.5">Prodotto in Italia</text>
+  </g>
+
+  <!-- QR per ingredienti e dichiarazione nutrizionale -->
+  <rect x="63.5" y="66.4" width="11.5" height="11.5" fill="none" stroke="#E06A0E" stroke-width=".25" stroke-dasharray=".8 .6"/>
+  <text class="t ph" x="69.25" y="72.9" font-size="2" font-weight="500" text-anchor="middle">QR</text>
+  <text class="t" x="75" y="81.3" font-size="2.6" font-weight="400" text-anchor="end">Ingredienti</text>
+
+  <!-- fascia verde, come sul fronte -->
+  <text class="deco w" x="45" y="96" font-size="4.8" text-anchor="middle" letter-spacing=".15">COSTA DEL BOSCO</text>
+  <circle cx="42.55" cy="99.4" r=".85" fill="#EB7A1C"/>
+  <circle cx="45" cy="99.4" r=".85" fill="#B58C0C"/>
+  <circle cx="47.45" cy="99.4" r=".85" fill="#EAD137"/>
+  <g class="t w" font-size="1.6" font-weight="400" text-anchor="middle">
+    <text x="45" y="104">Bottiglia GL 71 · Tappo FOR 51 · Capsula <tspan class="wph">___</tspan></text>
+    <text x="45" y="106.6">Raccolta vetro. Verifica le disposizioni del tuo Comune.</text>
+  </g>
+</svg>

@@ -71,16 +71,19 @@ header .wrap { padding-block: clamp(40px, 7vw, 72px) 28px; display: grid; gap: 1
 header h1 { font-family: var(--f-deco); font-size: clamp(2.2rem, 6vw, 3.6rem); letter-spacing: .06em; }
 header p { color: var(--muted); max-width: 64ch; }
 
-/* fronte e retro alla stessa scala: 90 mm e 110 mm di larghezza */
-.bench { display: grid; grid-template-columns: 90fr 110fr; gap: clamp(16px, 4vw, 48px); align-items: end; padding-block: 12px 48px; }
+/* fronte e retri alla stessa scala: 90, 90 e 110 mm di larghezza */
+.bench { display: grid; grid-template-columns: 90fr 90fr 110fr; gap: clamp(16px, 4vw, 48px); align-items: end; padding-block: 12px 48px; }
 .bench figure { margin: 0; display: grid; gap: 12px; min-width: 0; }
 .bench .item { box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 14px 34px -14px rgba(0,0,0,.4); line-height: 0; }
 .bench img { display: block; width: 100%; height: auto; aspect-ratio: 90 / 110; }
-.bench svg { display: block; width: 100%; height: auto; aspect-ratio: 110 / 80; }
+.bench svg { display: block; width: 100%; height: auto; }
+.bench .v svg { aspect-ratio: 90 / 110; }
+.bench .o svg { aspect-ratio: 110 / 80; }
 .bench figcaption { display: flex; justify-content: space-between; gap: 12px; font-size: .8rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
 .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; font-size: .9rem; color: var(--muted); padding-bottom: 8px; }
 .legend i { display: inline-block; width: 12px; height: 12px; background: var(--arancio); vertical-align: -1px; margin-right: 6px; }
-@media (max-width: 680px) { .bench { grid-template-columns: 1fr; } .bench figure:first-child { max-width: 82%; } }
+@media (max-width: 980px) { .bench { grid-template-columns: 1fr 1fr; } .bench figure.o { grid-column: 1 / -1; max-width: 640px; } }
+@media (max-width: 600px) { .bench { grid-template-columns: 1fr; } .bench figure:not(.o) { max-width: 82%; } }
 
 section { border-top: 1px solid var(--line); }
 section > .wrap { padding-block: clamp(40px, 7vw, 72px); display: grid; gap: 28px; }
@@ -136,22 +139,26 @@ footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem;
 
 <header>
   <div class="wrap">
-    <div class="label">Costa del Bosco · Scavet · bozza 2</div>
+    <div class="label">Costa del Bosco · Scavet · bozza 3</div>
     <h1>Controetichetta Scavet</h1>
-    <p>Formato orizzontale, con i dati del certificato di idoneità e del rapporto di prova. Sotto c'è la verifica punto per punto sul disciplinare della DOC Colli Tortonesi e sulle norme di etichettatura del vino.</p>
+    <p>Due versioni con lo stesso testo: una verticale, gemella del fronte, e una orizzontale. I dati vengono dal certificato di idoneità e dal rapporto di prova. Sotto c'è la verifica punto per punto sul disciplinare della DOC Colli Tortonesi e sulle norme di etichettatura del vino, valida per tutte e due.</p>
   </div>
 </header>
 
 <div class="wrap">
-  <div class="legend"><span><i></i>Dato ancora da completare</span><span>Fronte 90 × 110 mm, retro proposto 110 × 80 mm, in scala tra loro</span></div>
+  <div class="legend"><span><i></i>Dato ancora da completare</span><span>Fronte 90 × 110 mm, retro verticale 90 × 110 mm, retro orizzontale 110 × 80 mm, tutti in scala tra loro</span></div>
   <div class="bench">
     <figure>
       <div class="item"><img src="fronte.jpg" alt="Etichetta frontale di Scavet: mappa della vigna con cornice verde e il nome Costa del Bosco"></div>
       <figcaption><span>Fronte</span><span>Esistente</span></figcaption>
     </figure>
-    <figure>
-      <div class="item"><!--SVG--></div>
-      <figcaption><span>Retro</span><span>Proposta · 110 × 80 mm</span></figcaption>
+    <figure class="v">
+      <div class="item"><!--SVG-V--></div>
+      <figcaption><span>Retro A · verticale</span><span>90 × 110 mm</span></figcaption>
+    </figure>
+    <figure class="o">
+      <div class="item"><!--SVG-O--></div>
+      <figcaption><span>Retro B · orizzontale</span><span>110 × 80 mm</span></figcaption>
     </figure>
   </div>
 </div>
@@ -214,9 +221,9 @@ footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem;
         <span class="pill todo-p">Da completare</span>
         <div>
           <h3>Imbottigliatore</h3>
-          <p>Il vino è imbottigliato in conto lavoro dall'Azienda Agricola Mandirola Enrico a Casasco, per Costa del Bosco S.S. Società Agricola. La forma corretta è «Imbottigliato per … da …». Manca il comune della sede di Costa del Bosco. In alternativa al nome di Mandirola si può usare il suo codice ICQRF.</p>
+          <p>Il vino è imbottigliato in conto lavoro da un'altra cantina per Costa del Bosco S.S. Società Agricola. Al posto del nome di quella cantina si usa il suo codice imbottigliatore ICQRF: è ammesso perché in etichetta c'è per esteso il vostro nome, cioè quello di chi mette il vino in commercio. La riga diventa «Imbottigliato per Costa del Bosco … – Italia da [codice]».</p><p>Il comune è Avolasca, dalla sede legale registrata (Frazione Costa Giuliana 6, REA AL-314167). Manca il codice: lo ha la cantina che imbottiglia e non è il numero 00291 stampato sul certificato, che è un riferimento di Valoritalia. Chiedete anche come preferiscono che sia scritto.</p>
         </div>
-        <div class="src"><b>Reg. UE 2019/33 art. 46</b>Nome e comune dell'imbottigliatore, con «per» se l'imbottigliamento è fatto da terzi</div>
+        <div class="src"><b>Reg. UE 2019/33 art. 46</b>Imbottigliatore per nome o per codice, con «per» se l'imbottigliamento è fatto da terzi</div>
       </div>
 
       <div class="check">
@@ -231,8 +238,8 @@ footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem;
       <div class="check">
         <span class="pill todo-p">Da completare</span>
         <div>
-          <h3>Codici dei materiali di tappo e capsula</h3>
-          <p>Per la bottiglia di vetro il codice è GL 71. Mancano tappo (sughero FOR 51, vite in alluminio ALU 41…) e capsula, se c'è.</p>
+          <h3>Codice del materiale della capsula</h3>
+          <p>Bottiglia di vetro GL 71 e tappo di sughero FOR 51 sono in etichetta. Manca la capsula: il codice dipende dal materiale, per esempio PVC 3 per la plastica o ALU 41 per l'alluminio. Lo trovate sulla scheda tecnica del fornitore.</p>
         </div>
         <div class="src"><b>D.Lgs. 116/2020</b>Etichettatura ambientale degli imballaggi</div>
       </div>
@@ -300,13 +307,12 @@ footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem;
       <p>Spuntate le voci man mano: la spunta resta solo in questo browser.</p>
     </div>
     <ul class="todo" id="todo">
-      <li><input type="checkbox" id="t1"><label for="t1"><b>Comune della sede</b> di Costa del Bosco S.S., per la riga dell'imbottigliatore.</label><span class="who">Voi</span></li>
-      <li><input type="checkbox" id="t2"><label for="t2"><b>Nome o codice ICQRF</b> di Mandirola: decidere quale dei due stampare.</label><span class="who">Voi</span></li>
+            <li><input type="checkbox" id="t2"><label for="t2"><b>Codice ICQRF</b> della cantina che imbottiglia, nella forma esatta da stampare.</label><span class="who">Cantina</span></li>
       <li><input type="checkbox" id="t3"><label for="t3"><b>Ingredienti e additivi</b> usati in cantina, compresi i chiarificanti.</label><span class="who">Enologo</span></li>
       <li><input type="checkbox" id="t4"><label for="t4"><b>Pagina e-label</b> e QR che la apre.</label><span class="who">Voi</span></li>
-      <li><input type="checkbox" id="t5"><label for="t5"><b>Tappo e capsula</b>: materiali, per i codici ambientali.</label><span class="who">Voi</span></li>
+      <li><input type="checkbox" id="t5"><label for="t5"><b>Materiale della capsula</b>, per il codice ambientale.</label><span class="who">Fornitore</span></li>
       <li><input type="checkbox" id="t6"><label for="t6"><b>Numerazione</b>: tenerla o no, e come stampare i numeri da 1 a 980.</label><span class="who">Tipografia</span></li>
-      <li><input type="checkbox" id="t7"><label for="t7"><b>Misure reali</b> di fronte e retro, e forma della bottiglia.</label><span class="who">Tipografia</span></li>
+      <li><input type="checkbox" id="t7"><label for="t7"><b>Versione e misure</b>: scegliere verticale o orizzontale e confermare le misure con la forma della bottiglia.</label><span class="who">Voi e tipografia</span></li>
       <li><input type="checkbox" id="t8"><label for="t8"><b>Carattere del fronte</b>: quello qui (Federo) è provvisorio. Il grafico può riconoscerlo dal file originale del fronte.</label><span class="who">Grafico</span></li>
       <li><input type="checkbox" id="t9"><label for="t9"><b>Approvazione del testo</b> da parte di Valoritalia o del consorzio.</label><span class="who">Valoritalia</span></li>
     </ul>
@@ -325,13 +331,13 @@ footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem;
       <li><a href="https://www.regione.piemonte.it/governo/bollettino/abbonati/2024/41/attach/aa_aa_regione%20piemonte%20-%20comunicato_2024-10-08_91860.pdf" target="_blank" rel="noopener">Proposta di modifica del disciplinare</a>, Bollettino Ufficiale Regione Piemonte n. 41 del 10/10/2024.</li>
       <li>Reg. UE 2019/33, Reg. UE 1169/2011, Reg. UE 2021/2117, D.Lgs. 116/2020.</li>
     </ul>
-    <p class="note">Il file vettoriale è <code>etichetta/controetichetta_scavet.svg</code>, in millimetri reali. Per la stampa il grafico deve aggiungere 2 mm di abbondanza e convertire i testi in tracciati.</p>
+    <p class="note">I file vettoriali sono <code>etichetta/controetichetta_scavet_verticale.svg</code> e <code>etichetta/controetichetta_scavet_orizzontale.svg</code>, in millimetri reali. Per la stampa il grafico deve aggiungere 2 mm di abbondanza e convertire i testi in tracciati.</p>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="wrap">Costa del Bosco · controetichetta di Scavet · bozza 2 del 31 ottobre 2026</div>
+  <div class="wrap">Costa del Bosco · controetichetta di Scavet · bozza 3 del 31 ottobre 2026</div>
 </footer>
 
 <script>
