@@ -1,0 +1,418 @@
+<title>Controetichetta Scavet</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Federo&family=Jost:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap">
+<style>
+/* Layout: banco di prova dello stampatore. Fronte e retro affiancati in scala, sotto la verifica punto per punto */
+:root {
+  --verde: #1B9238;
+  --oro: #B18D13;
+  --arancio: #E06A0E;
+
+  --bg: #E9ECE8;
+  --surface: #F6F7F4;
+  --fg: #18201A;
+  --muted: #5A665D;
+  --line: #CBD2CA;
+  --accent: #157A2E;
+  --ok-bg: #DCEFDF; --ok-fg: #165C27;
+  --warn-bg: #FBE3CF; --warn-fg: #8A3A00;
+  --todo-bg: #E4E6EE; --todo-fg: #2E3A6B;
+
+  --f-sans: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+  --f-deco: "Federo", "Poiret One", "Futura", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111613; --surface: #18201B; --fg: #E3E8E2; --muted: #9AA79D; --line: #2B372F;
+    --accent: #5CCB78;
+    --ok-bg: #173A21; --ok-fg: #8FE0A4;
+    --warn-bg: #43230C; --warn-fg: #FFB57A;
+    --todo-bg: #232A44; --todo-fg: #AEB9F0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111613; --surface: #18201B; --fg: #E3E8E2; --muted: #9AA79D; --line: #2B372F;
+  --accent: #5CCB78;
+  --ok-bg: #173A21; --ok-fg: #8FE0A4;
+  --warn-bg: #43230C; --warn-fg: #FFB57A;
+  --todo-bg: #232A44; --todo-fg: #AEB9F0;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-sans);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) {
+  .wrap { padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); }
+}
+h1, h2, h3 { margin: 0; font-weight: 400; line-height: 1.15; text-wrap: balance; }
+p { margin: 0; }
+a { color: var(--accent); text-underline-offset: 3px; }
+b { font-weight: 500; }
+.label { font-size: .74rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
+
+header .wrap { padding-block: clamp(40px, 7vw, 72px) 28px; display: grid; gap: 14px; }
+header h1 { font-family: var(--f-deco); font-size: clamp(2.2rem, 6vw, 3.6rem); letter-spacing: .06em; }
+header p { color: var(--muted); max-width: 64ch; }
+
+/* fronte e retro alla stessa scala: 90 mm e 110 mm di larghezza */
+.bench { display: grid; grid-template-columns: 90fr 110fr; gap: clamp(16px, 4vw, 48px); align-items: end; padding-block: 12px 48px; }
+.bench figure { margin: 0; display: grid; gap: 12px; min-width: 0; }
+.bench .item { box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 14px 34px -14px rgba(0,0,0,.4); line-height: 0; }
+.bench img { display: block; width: 100%; height: auto; aspect-ratio: 90 / 110; }
+.bench svg { display: block; width: 100%; height: auto; aspect-ratio: 110 / 80; }
+.bench figcaption { display: flex; justify-content: space-between; gap: 12px; font-size: .8rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; font-size: .9rem; color: var(--muted); padding-bottom: 8px; }
+.legend i { display: inline-block; width: 12px; height: 12px; background: var(--arancio); vertical-align: -1px; margin-right: 6px; }
+@media (max-width: 680px) { .bench { grid-template-columns: 1fr; } .bench figure:first-child { max-width: 82%; } }
+
+section { border-top: 1px solid var(--line); }
+section > .wrap { padding-block: clamp(40px, 7vw, 72px); display: grid; gap: 28px; }
+.head { display: grid; gap: 10px; max-width: 740px; }
+.head h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); font-weight: 300; }
+.head p { color: var(--muted); }
+
+/* riepilogo */
+.tally { display: flex; flex-wrap: wrap; gap: 10px; }
+.tally span { display: inline-flex; align-items: baseline; gap: 8px; padding: 6px 12px; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.tally b { font-size: 1.25rem; font-weight: 500; }
+
+/* verifica */
+.checks { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.check { display: grid; grid-template-columns: 7.5rem 1fr 15rem; gap: 20px; padding-block: 16px; border-bottom: 1px solid var(--line); align-items: start; }
+.check > * { min-width: 0; }
+.pill { justify-self: start; font-size: .7rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; padding: 3px 9px; white-space: nowrap; }
+.ok { background: var(--ok-bg); color: var(--ok-fg); }
+.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.todo-p { background: var(--todo-bg); color: var(--todo-fg); }
+.check h3 { font-size: 1rem; font-weight: 500; margin-bottom: 4px; }
+.check p { font-size: .95rem; color: var(--muted); }
+.check p + p { margin-top: 6px; }
+.check .src { font-size: .82rem; color: var(--muted); line-height: 1.45; }
+.check .src b { display: block; color: var(--fg); font-weight: 500; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; }
+@media (max-width: 820px) {
+  .check { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* dati dai documenti */
+.data { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.datum { background: var(--surface); border: 1px solid var(--line); padding: 16px 18px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.datum b { font-family: var(--f-deco); font-weight: 400; font-size: 1.7rem; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.datum span { font-size: .88rem; color: var(--muted); line-height: 1.4; }
+@media (max-width: 860px) { .data { grid-template-columns: 1fr 1fr; } }
+
+.todo { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); max-width: 880px; }
+.todo li { display: grid; grid-template-columns: 1.6rem 1fr auto; gap: 12px; align-items: baseline; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.todo input { width: 16px; height: 16px; accent-color: var(--accent); margin: 0; transform: translateY(2px); }
+.todo label { cursor: pointer; }
+.todo .who { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.todo input:checked + label { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+.todo input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 600px) {
+  .todo li { grid-template-columns: 1.6rem 1fr; }
+  .todo .who { grid-column: 2; }
+}
+
+.note { font-size: .92rem; color: var(--muted); max-width: 72ch; border-left: 2px solid var(--line); padding-left: 16px; }
+.sources { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; font-size: .92rem; color: var(--muted); }
+footer .wrap { padding-block: 32px 48px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="label">Costa del Bosco · Scavet · bozza 2</div>
+    <h1>Controetichetta Scavet</h1>
+    <p>Formato orizzontale, con i dati del certificato di idoneità e del rapporto di prova. Sotto c'è la verifica punto per punto sul disciplinare della DOC Colli Tortonesi e sulle norme di etichettatura del vino.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="legend"><span><i></i>Dato ancora da completare</span><span>Fronte 90 × 110 mm, retro proposto 110 × 80 mm, in scala tra loro</span></div>
+  <div class="bench">
+    <figure>
+      <div class="item"><img src="fronte.jpg" alt="Etichetta frontale di Scavet: mappa della vigna con cornice verde e il nome Costa del Bosco"></div>
+      <figcaption><span>Fronte</span><span>Esistente</span></figcaption>
+    </figure>
+    <figure>
+      <div class="item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 80" width="110mm" height="80mm" class="retro" role="img" aria-label="Controetichetta di Scavet, formato orizzontale">
+  <style>
+    .deco { font-family: Federo, "Poiret One", "Futura", sans-serif; }
+    .t { font-family: Jost, "Futura", "Century Gothic", sans-serif; fill: #1D1D1B; }
+    .ph { fill: #E06A0E; }
+    .w { fill: #FFFFFF; }
+    .wph { fill: #F2DA4A; }
+  </style>
+
+  <!-- cornice verde e campo bianco con filo oro, come il fronte -->
+  <rect width="110" height="80" fill="#1B9238"/>
+  <rect x="6" y="4" width="98" height="62" fill="#FFFFFF" stroke="#B18D13" stroke-width=".34"/>
+
+  <!-- colonna sinistra: nome, denominazione, racconto -->
+  <text class="deco" x="11" y="13.6" font-size="6.8" letter-spacing=".5" fill="#111111">SCAVET</text>
+  <text class="t" x="11" y="18.4" font-size="2.5" font-weight="500" letter-spacing=".25">COLLI TORTONESI CORTESE</text>
+  <text class="t" x="11" y="21.5" font-size="2" font-weight="400" letter-spacing=".05">DENOMINAZIONE DI ORIGINE CONTROLLATA</text>
+  <line x1="11" y1="24.6" x2="21" y2="24.6" stroke="#B18D13" stroke-width=".3"/>
+
+  <g class="t" font-size="2.3" font-weight="300">
+    <text x="11" y="29.2">In dialetto, <tspan font-style="italic">scavet</tspan> è un piccolo scasso:</text>
+    <text x="11" y="32.4">il pezzo di terra che nostro nonno ha</text>
+    <text x="11" y="35.6">preparato con l'aratro, senza scavatore.</text>
+    <text x="11" y="38.8">Oggi l'uva la raccogliamo noi, a mano.</text>
+    <text x="11" y="42">Cortese, 980 bottiglie:</text>
+    <text x="11" y="45.2">il nostro primo vino.</text>
+  </g>
+  <text class="t" x="11" y="49.2" font-size="2.3" font-style="italic" font-weight="400">Matteo e Sara</text>
+
+  <line x1="63.5" y1="9" x2="63.5" y2="49.5" stroke="#B18D13" stroke-width=".2"/>
+
+  <!-- colonna destra: volume e grado nello stesso campo visivo della denominazione -->
+  <text class="t" x="67" y="15.8" font-size="5.8" font-weight="400">750 ml</text>
+  <text class="t" x="67" y="22.2" font-size="4.4" font-weight="400">12,5% vol</text>
+  <g class="t" font-size="2.7" font-weight="300">
+    <text x="67" y="27.6" font-weight="500">Contiene solfiti</text>
+    <text x="67" y="31.2">Vendemmia 2025</text>
+    <text x="67" y="34.8">Bottiglia N° <tspan class="ph">___</tspan>/980</text>
+  </g>
+
+  <!-- QR per ingredienti e dichiarazione nutrizionale -->
+  <rect x="67" y="38" width="11.5" height="11.5" fill="none" stroke="#E06A0E" stroke-width=".25" stroke-dasharray=".8 .6"/>
+  <text class="t ph" x="72.75" y="44.5" font-size="2" font-weight="500" text-anchor="middle">QR</text>
+  <g class="t" font-size="2.6" font-weight="400">
+    <text x="80.5" y="42.2">Ingredienti</text>
+    <text x="80.5" y="45.2">e valori</text>
+    <text x="80.5" y="48.2">nutrizionali</text>
+  </g>
+
+  <!-- striscia in basso: imbottigliatore, lotto, energia -->
+  <line x1="11" y1="52.4" x2="99" y2="52.4" stroke="#625D26" stroke-width=".18"/>
+  <g class="t" font-size="2.6" font-weight="300">
+    <text x="11" y="56.6">Imbottigliato per Costa del Bosco S.S. Soc. Agr., <tspan class="ph">Comune</tspan> – Italia</text>
+    <text x="11" y="59.7">da Az. Agr. Mandirola Enrico, Casasco – Italia · Lotto L. 15326</text>
+    <text x="11" y="62.8">E (100 ml) = 300 kJ / 72 kcal · Prodotto in Italia</text>
+  </g>
+
+  <!-- fascia verde: nome e tre punti come il fronte, a destra lo smaltimento -->
+  <text class="deco w" x="11" y="74.6" font-size="4.4" letter-spacing=".15">COSTA DEL BOSCO</text>
+  <circle cx="59.5" cy="73.1" r=".75" fill="#EB7A1C"/>
+  <circle cx="62" cy="73.1" r=".75" fill="#B58C0C"/>
+  <circle cx="64.5" cy="73.1" r=".75" fill="#EAD137"/>
+  <g class="t w" font-size="1.5" font-weight="400" text-anchor="end">
+    <text x="99" y="71">Bottiglia GL 71 · Tappo <tspan class="wph">___</tspan> · Capsula <tspan class="wph">___</tspan></text>
+    <text x="99" y="73.4">Raccolta vetro. Verifica le disposizioni</text>
+    <text x="99" y="75.8">del tuo Comune.</text>
+  </g>
+</svg>
+</div>
+      <figcaption><span>Retro</span><span>Proposta · 110 × 80 mm</span></figcaption>
+    </figure>
+  </div>
+</div>
+
+<main>
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Dai vostri documenti</div>
+      <h2>I numeri che vanno in etichetta.</h2>
+      <p>Certificato di idoneità Valoritalia n. 027970/2026-03 del 18/06/2026 e rapporto di prova n. 26LA04629 del 16/06/2026.</p>
+    </div>
+    <div class="data">
+      <div class="datum"><b>12,5% vol</b><span>In etichetta. L'analisi dice 12,72%: si arrotonda al mezzo grado, tolleranza ammessa ±0,5.</span></div>
+      <div class="datum"><b>980</b><span>Bottiglie da 0,75 l, per 7,35 hl. Non 1.000: corretto nel racconto e nella numerazione.</span></div>
+      <div class="datum"><b>L. 15326</b><span>Lotto della partita certificata.</span></div>
+      <div class="datum"><b>2025</b><span>Annata, obbligatoria per questa DOC.</span></div>
+      <div class="datum"><b>109 mg/l</b><span>Anidride solforosa totale: sopra 10 mg/l, quindi «Contiene solfiti».</span></div>
+      <div class="datum"><b>72 kcal</b><span>Per 100 ml, 300 kJ. Calcolato da alcol, zuccheri (1,4 g/l) e acidità (5,11 g/l).</span></div>
+      <div class="datum"><b>Secco</b><span>Tipologia certificata: Colli Tortonesi Cortese DOC, secco. Scriverlo è facoltativo.</span></div>
+      <div class="datum"><b>18/06/2028</b><span>Scadenza dell'idoneità per il vino ancora sfuso. Le bottiglie già fatte non scadono.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Verifica</div>
+      <h2>Conforme, con tre punti da sistemare e due da chiarire.</h2>
+      <p>Ho confrontato la bozza con il disciplinare della DOC Colli Tortonesi, sia nella versione in vigore sia nella proposta di modifica pubblicata dalla Regione Piemonte nel 2024, e con le regole europee sull'etichetta del vino.</p>
+    </div>
+    <div class="tally">
+      <span class="ok"><b>10</b> conformi</span>
+      <span class="warn"><b>2</b> da chiarire</span>
+      <span class="todo-p"><b>3</b> da completare</span>
+    </div>
+
+    <div class="checks">
+      <div class="check">
+        <span class="pill warn">Da chiarire</span>
+        <div>
+          <h3>La parola «vigna» accanto a Scavet</h3>
+          <p>Il certificato riporta solo «Colli Tortonesi Cortese DOC Secco», senza menzione vigna. Quindi in etichetta Scavet può comparire come nome del vino, ma non come «Vigna Scavet» né presentato come nome di una vigna.</p>
+          <p>Per questo ho tolto la colonna «Vigna» della bozza 1 e ho riscritto il racconto senza dire che Scavet è una vigna: ora è «il pezzo di terra che nostro nonno ha preparato». Per usare la menzione serve iscriverla nell'elenco regionale e vinificare a parte. La modifica del 2024 aggiunge vigneto di almeno 7 anni e vinificazione e imbottigliamento fatti da voi, mentre oggi il vino è fatto in conto lavoro.</p>
+        </div>
+        <div class="src"><b>Disciplinare art. 7 c. 3</b>Menzione «vigna» solo se iscritta, con caratteri non oltre il 50% della DOC</div>
+      </div>
+
+      <div class="check">
+        <span class="pill warn">Da chiarire</span>
+        <div>
+          <h3>Il nome del comune dei vigneti</h3>
+          <p>La bozza 1 scriveva «Avolasca (AL)» come provenienza delle uve. Il disciplinare non prevede menzioni geografiche più piccole della DOC, quindi per prudenza l'ho tolto. Resta solo dove la legge lo chiede, nell'indirizzo dell'imbottigliatore. Chiedete a Valoritalia se lo ammettono nel racconto.</p>
+        </div>
+        <div class="src"><b>Disciplinare art. 7 c. 1</b>Vietate qualificazioni non previste dal disciplinare</div>
+      </div>
+
+      <div class="check">
+        <span class="pill todo-p">Da completare</span>
+        <div>
+          <h3>Imbottigliatore</h3>
+          <p>Il vino è imbottigliato in conto lavoro dall'Azienda Agricola Mandirola Enrico a Casasco, per Costa del Bosco S.S. Società Agricola. La forma corretta è «Imbottigliato per … da …». Manca il comune della sede di Costa del Bosco. In alternativa al nome di Mandirola si può usare il suo codice ICQRF.</p>
+        </div>
+        <div class="src"><b>Reg. UE 2019/33 art. 46</b>Nome e comune dell'imbottigliatore, con «per» se l'imbottigliamento è fatto da terzi</div>
+      </div>
+
+      <div class="check">
+        <span class="pill todo-p">Da completare</span>
+        <div>
+          <h3>QR con ingredienti e valori nutrizionali</h3>
+          <p>Serve una pagina e-label con l'elenco degli ingredienti e la tabella nutrizionale completa, senza pubblicità né tracciamento. Accanto al QR deve esserci la parola «Ingredienti». L'elenco degli ingredienti e degli additivi lo dà l'enologo, compresi eventuali chiarificanti derivati da uova o latte, che sono allergeni.</p>
+        </div>
+        <div class="src"><b>Reg. UE 2021/2117</b>Energia in etichetta, il resto può stare online</div>
+      </div>
+
+      <div class="check">
+        <span class="pill todo-p">Da completare</span>
+        <div>
+          <h3>Codici dei materiali di tappo e capsula</h3>
+          <p>Per la bottiglia di vetro il codice è GL 71. Mancano tappo (sughero FOR 51, vite in alluminio ALU 41…) e capsula, se c'è.</p>
+        </div>
+        <div class="src"><b>D.Lgs. 116/2020</b>Etichettatura ambientale degli imballaggi</div>
+      </div>
+
+      <div class="check">
+        <span class="pill ok">Conforme</span>
+        <div><h3>Annata</h3><p>«Vendemmia 2025» è in etichetta. Per i Colli Tortonesi fermi è obbligatoria.</p></div>
+        <div class="src"><b>Disciplinare art. 7 c. 5</b></div>
+      </div>
+      <div class="check">
+        <span class="pill ok">Conforme</span>
+        <div><h3>Denominazione</h3><p>«Colli Tortonesi Cortese» con «Denominazione di Origine Controllata», come nel certificato.</p></div>
+        <div class="src"><b>Certificato 027970/2026-03</b></div>
+      </div>
+      <div class="check">
+        <span class="pill ok">Conforme</span>
+        <div><h3>Aggettivi vietati</h3><p>Nessuno di «extra», «fine», «naturale», «scelto», «selezionato», «vecchio» o simili. Nemmeno nel racconto.</p></div>
+        <div class="src"><b>Disciplinare art. 7 c. 1</b></div>
+      </div>
+      <div class="check">
+        <span class="pill ok">Conforme</span>
+        <div><h3>Scavet come nome del vino</h3><p>I nomi e marchi privati sono ammessi se non sono elogiativi e non ingannano. Conviene registrare Scavet come marchio.</p></div>
+        <div class="src"><b>Disciplinare art. 7 c. 2</b></div>
+      </div>
+      <div class="check">
+        <span class="pill ok">Conforme</span>
+        <div><h3>Stesso campo visivo</h3><p>Denominazione, grado alcolico e volume sono sulla stessa faccia del retro. Il fronte non li porta, quindi devono stare qui insieme.</p></div>
+        <div class="src"><b>Reg. UE 2019/33 art. 40</b></div>
+      </div>
+      <div class="check">
+        <span class="pill ok">Conforme</span>
+        <div><h3>Grado alcolico</h3><p>12,5% vol, in mezze unità, con altezza delle cifre di circa 3,1 mm sopra il minimo di 3 mm.</p></div>
+        <div class="src"><b>Reg. UE 2019/33 art. 44</b>Tolleranza ±0,5% vol</div>
+      </div>
+      <div class="check">
+        <span class="pill ok">Conforme</span>
+        <div><h3>Volume e bottiglia</h3><p>750 ml, cifre alte circa 4 mm. Il disciplinare esclude solo il contenitore da 200 cl e ammette ogni tipo di chiusura.</p></div>
+        <div class="src"><b>Disciplinare art. 8</b></div>
+      </div>
+      <div class="check">
+        <span class="pill ok">Conforme</span>
+        <div><h3>Solfiti e lotto</h3><p>«Contiene solfiti» in evidenza. Lotto L. 15326 come nel certificato.</p></div>
+        <div class="src"><b>Reg. UE 1169/2011</b></div>
+      </div>
+      <div class="check">
+        <span class="pill ok">Conforme</span>
+        <div><h3>Valore energetico</h3><p>E (100 ml) = 300 kJ / 72 kcal, in kJ e kcal. Il calcolo non include il glicerolo, che non è nel rapporto di prova: con quello si sale di 1 o 2 kcal. Fatelo confermare all'enologo.</p></div>
+        <div class="src"><b>Reg. UE 2021/2117</b></div>
+      </div>
+      <div class="check">
+        <span class="pill ok">Conforme</span>
+        <div><h3>Dimensione dei testi obbligatori</h3><p>Tutte le indicazioni di legge sono in corpo 2,6 mm o più, che in Jost dà un'altezza della x di circa 1,2 mm.</p></div>
+        <div class="src"><b>Reg. UE 1169/2011 art. 13</b>Altezza x minima 1,2 mm</div>
+      </div>
+    </div>
+    <p class="note">Questa verifica si basa sui documenti che mi avete dato e sui testi pubblici del disciplinare. Prima della stampa fate approvare il testo definitivo a Valoritalia o al Consorzio Tutela Vini Colli Tortonesi: sono loro a dare l'ultima parola.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Prima della stampa</div>
+      <h2>Cosa manca per chiuderla.</h2>
+      <p>Spuntate le voci man mano: la spunta resta solo in questo browser.</p>
+    </div>
+    <ul class="todo" id="todo">
+      <li><input type="checkbox" id="t1"><label for="t1"><b>Comune della sede</b> di Costa del Bosco S.S., per la riga dell'imbottigliatore.</label><span class="who">Voi</span></li>
+      <li><input type="checkbox" id="t2"><label for="t2"><b>Nome o codice ICQRF</b> di Mandirola: decidere quale dei due stampare.</label><span class="who">Voi</span></li>
+      <li><input type="checkbox" id="t3"><label for="t3"><b>Ingredienti e additivi</b> usati in cantina, compresi i chiarificanti.</label><span class="who">Enologo</span></li>
+      <li><input type="checkbox" id="t4"><label for="t4"><b>Pagina e-label</b> e QR che la apre.</label><span class="who">Voi</span></li>
+      <li><input type="checkbox" id="t5"><label for="t5"><b>Tappo e capsula</b>: materiali, per i codici ambientali.</label><span class="who">Voi</span></li>
+      <li><input type="checkbox" id="t6"><label for="t6"><b>Numerazione</b>: tenerla o no, e come stampare i numeri da 1 a 980.</label><span class="who">Tipografia</span></li>
+      <li><input type="checkbox" id="t7"><label for="t7"><b>Misure reali</b> di fronte e retro, e forma della bottiglia.</label><span class="who">Tipografia</span></li>
+      <li><input type="checkbox" id="t8"><label for="t8"><b>Carattere del fronte</b>: quello qui (Federo) è provvisorio. Il grafico può riconoscerlo dal file originale del fronte.</label><span class="who">Grafico</span></li>
+      <li><input type="checkbox" id="t9"><label for="t9"><b>Approvazione del testo</b> da parte di Valoritalia o del consorzio.</label><span class="who">Valoritalia</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Fonti</div>
+      <h2>Su cosa si basa la verifica.</h2>
+    </div>
+    <ul class="sources">
+      <li>Certificato di idoneità Valoritalia 027970/2026-03 e rapporto di prova 26LA04629, nella cartella <code>documenti vino</code>.</li>
+      <li><a href="https://www.valoritalia.it/wp-content/uploads/2022/10/Colli-Tortonesi.pdf" target="_blank" rel="noopener">Disciplinare DOC Colli Tortonesi</a>, testo pubblicato da Valoritalia.</li>
+      <li><a href="https://www.regione.piemonte.it/governo/bollettino/abbonati/2024/41/attach/aa_aa_regione%20piemonte%20-%20comunicato_2024-10-08_91860.pdf" target="_blank" rel="noopener">Proposta di modifica del disciplinare</a>, Bollettino Ufficiale Regione Piemonte n. 41 del 10/10/2024.</li>
+      <li>Reg. UE 2019/33, Reg. UE 1169/2011, Reg. UE 2021/2117, D.Lgs. 116/2020.</li>
+    </ul>
+    <p class="note">Il file vettoriale è <code>etichetta/controetichetta_scavet.svg</code>, in millimetri reali. Per la stampa il grafico deve aggiungere 2 mm di abbondanza e convertire i testi in tracciati.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">Costa del Bosco · controetichetta di Scavet · bozza 2 del 31 ottobre 2026</div>
+</footer>
+
+<script>
+(function () {
+  var key = "scavet-retro-todo-2";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) {}
+  document.querySelectorAll("#todo input").forEach(function (box) {
+    if (saved[box.id]) box.checked = true;
+    box.addEventListener("change", function () {
+      saved[box.id] = box.checked;
+      try { localStorage.setItem(key, JSON.stringify(saved)); } catch (e) {}
+    });
+  });
+})();
+</script>

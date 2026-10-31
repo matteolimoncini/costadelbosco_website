@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 110" width="90mm" height="110mm" class="retro" role="img" aria-label="Controetichetta di Scavet">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 80" width="110mm" height="80mm" class="retro" role="img" aria-label="Controetichetta di Scavet, formato orizzontale">
   <style>
     .deco { font-family: Federo, "Poiret One", "Futura", sans-serif; }
     .t { font-family: Jost, "Futura", "Century Gothic", sans-serif; fill: #1D1D1B; }
@@ -7,62 +7,62 @@
     .wph { fill: #F2DA4A; }
   </style>
 
-  <!-- cornice e campo, stesse misure del fronte -->
-  <rect width="90" height="110" fill="#1B9238"/>
-  <rect x="10.75" y="4.65" width="68.5" height="83.75" fill="#FFFFFF" stroke="#B18D13" stroke-width=".34"/>
+  <!-- cornice verde e campo bianco con filo oro, come il fronte -->
+  <rect width="110" height="80" fill="#1B9238"/>
+  <rect x="6" y="4" width="98" height="62" fill="#FFFFFF" stroke="#B18D13" stroke-width=".34"/>
 
-  <!-- nome del vino e denominazione -->
-  <text class="deco" x="45" y="13.2" font-size="7.2" text-anchor="middle" letter-spacing=".5" fill="#111111">SCAVET</text>
-  <text class="t" x="45" y="17.6" font-size="2.5" font-weight="500" text-anchor="middle" letter-spacing=".42">COLLI TORTONESI CORTESE</text>
-  <text class="t" x="45" y="20.6" font-size="2.1" font-weight="400" text-anchor="middle" letter-spacing=".3">DENOMINAZIONE DI ORIGINE CONTROLLATA</text>
-  <line x1="40" y1="23.4" x2="50" y2="23.4" stroke="#B18D13" stroke-width=".3"/>
-
-  <!-- racconto -->
-  <g class="t" font-size="2.45" font-weight="300" text-anchor="middle">
-    <text x="45" y="28.4">In dialetto, <tspan font-style="italic">scavet</tspan> è un piccolo scasso.</text>
-    <text x="45" y="31.9">È la vigna che nostro nonno ha preparato</text>
-    <text x="45" y="35.4">con l'aratro, senza scavatore, su un</text>
-    <text x="45" y="38.9">fazzoletto di terra. Oggi la vendemmiamo</text>
-    <text x="45" y="42.4">noi, a mano. Cortese, 1.000 bottiglie:</text>
-    <text x="45" y="45.9">il nostro primo vino.</text>
-  </g>
-  <text class="t" x="45" y="50" font-size="2.45" font-style="italic" font-weight="400" text-anchor="middle">Matteo e Sara</text>
-
-  <!-- dati della vigna -->
-  <line x1="15" y1="53" x2="75" y2="53" stroke="#625D26" stroke-width=".18"/>
-  <g class="t" text-anchor="middle">
-    <text x="25" y="56.4" font-size="1.6" font-weight="500" letter-spacing=".3">VIGNA</text>
-    <text x="45" y="56.4" font-size="1.6" font-weight="500" letter-spacing=".3">VENDEMMIA</text>
-    <text x="65" y="56.4" font-size="1.6" font-weight="500" letter-spacing=".3">BOTTIGLIA</text>
-    <text x="25" y="59.6" font-size="2.25" font-weight="300">Avolasca (AL)</text>
-    <text x="45" y="59.6" font-size="2.25" font-weight="300"><tspan class="ph">20__</tspan>, a mano</text>
-    <text x="65" y="59.6" font-size="2.25" font-weight="300">N° <tspan class="ph">____</tspan> di 1.000</text>
-  </g>
-  <line x1="15" y1="62" x2="75" y2="62" stroke="#625D26" stroke-width=".18"/>
-
-  <!-- indicazioni obbligatorie: denominazione, grado e volume stanno nello stesso campo visivo -->
-  <text class="t" x="15" y="69" font-size="4.6" font-weight="400"><tspan class="ph">__,_</tspan> % vol</text>
-  <text class="t" x="75" y="69.2" font-size="5.8" font-weight="400" text-anchor="end">750 ml ℮</text>
+  <!-- colonna sinistra: nome, denominazione, racconto -->
+  <text class="deco" x="11" y="13.6" font-size="6.8" letter-spacing=".5" fill="#111111">SCAVET</text>
+  <text class="t" x="11" y="18.4" font-size="2.5" font-weight="500" letter-spacing=".25">COLLI TORTONESI CORTESE</text>
+  <text class="t" x="11" y="21.5" font-size="2" font-weight="400" letter-spacing=".05">DENOMINAZIONE DI ORIGINE CONTROLLATA</text>
+  <line x1="11" y1="24.6" x2="21" y2="24.6" stroke="#B18D13" stroke-width=".3"/>
 
   <g class="t" font-size="2.3" font-weight="300">
-    <text x="15" y="74" font-weight="500" font-size="2.6">Contiene solfiti</text>
-    <text x="15" y="77.3">Imbottigliato da <tspan class="ph">ragione sociale</tspan></text>
-    <text x="15" y="80.4"><tspan class="ph">Comune (AL)</tspan> · Prodotto in Italia</text>
-    <text x="15" y="83.6">Lotto <tspan class="ph">L. ____</tspan> · E (100 ml) = <tspan class="ph">___</tspan> kcal</text>
+    <text x="11" y="29.2">In dialetto, <tspan font-style="italic">scavet</tspan> è un piccolo scasso:</text>
+    <text x="11" y="32.4">il pezzo di terra che nostro nonno ha</text>
+    <text x="11" y="35.6">preparato con l'aratro, senza scavatore.</text>
+    <text x="11" y="38.8">Oggi l'uva la raccogliamo noi, a mano.</text>
+    <text x="11" y="42">Cortese, 980 bottiglie:</text>
+    <text x="11" y="45.2">il nostro primo vino.</text>
+  </g>
+  <text class="t" x="11" y="49.2" font-size="2.3" font-style="italic" font-weight="400">Matteo e Sara</text>
+
+  <line x1="63.5" y1="9" x2="63.5" y2="49.5" stroke="#B18D13" stroke-width=".2"/>
+
+  <!-- colonna destra: volume e grado nello stesso campo visivo della denominazione -->
+  <text class="t" x="67" y="15.8" font-size="5.8" font-weight="400">750 ml</text>
+  <text class="t" x="67" y="22.2" font-size="4.4" font-weight="400">12,5% vol</text>
+  <g class="t" font-size="2.7" font-weight="300">
+    <text x="67" y="27.6" font-weight="500">Contiene solfiti</text>
+    <text x="67" y="31.2">Vendemmia 2025</text>
+    <text x="67" y="34.8">Bottiglia N° <tspan class="ph">___</tspan>/980</text>
   </g>
 
   <!-- QR per ingredienti e dichiarazione nutrizionale -->
-  <rect x="63" y="71.4" width="12" height="12" fill="none" stroke="#E06A0E" stroke-width=".25" stroke-dasharray=".8 .6"/>
-  <text class="t ph" x="69" y="78.1" font-size="2" font-weight="500" text-anchor="middle">QR</text>
-  <text class="t" x="69" y="86" font-size="1.45" font-weight="400" text-anchor="middle">Ingredienti e valori</text>
+  <rect x="67" y="38" width="11.5" height="11.5" fill="none" stroke="#E06A0E" stroke-width=".25" stroke-dasharray=".8 .6"/>
+  <text class="t ph" x="72.75" y="44.5" font-size="2" font-weight="500" text-anchor="middle">QR</text>
+  <g class="t" font-size="2.6" font-weight="400">
+    <text x="80.5" y="42.2">Ingredienti</text>
+    <text x="80.5" y="45.2">e valori</text>
+    <text x="80.5" y="48.2">nutrizionali</text>
+  </g>
 
-  <!-- fascia verde, come sul fronte -->
-  <text class="deco w" x="45" y="96" font-size="4.8" text-anchor="middle" letter-spacing=".15">COSTA DEL BOSCO</text>
-  <circle cx="42.55" cy="99.4" r=".85" fill="#EB7A1C"/>
-  <circle cx="45" cy="99.4" r=".85" fill="#B58C0C"/>
-  <circle cx="47.45" cy="99.4" r=".85" fill="#EAD137"/>
-  <g class="t w" font-size="1.6" font-weight="400" text-anchor="middle">
-    <text x="45" y="104">Bottiglia GL 71 · Tappo <tspan class="wph">____</tspan> · Capsula <tspan class="wph">____</tspan></text>
-    <text x="45" y="106.6">Raccolta vetro. Verifica le disposizioni del tuo Comune.</text>
+  <!-- striscia in basso: imbottigliatore, lotto, energia -->
+  <line x1="11" y1="52.4" x2="99" y2="52.4" stroke="#625D26" stroke-width=".18"/>
+  <g class="t" font-size="2.6" font-weight="300">
+    <text x="11" y="56.6">Imbottigliato per Costa del Bosco S.S. Soc. Agr., <tspan class="ph">Comune</tspan> – Italia</text>
+    <text x="11" y="59.7">da Az. Agr. Mandirola Enrico, Casasco – Italia · Lotto L. 15326</text>
+    <text x="11" y="62.8">E (100 ml) = 300 kJ / 72 kcal · Prodotto in Italia</text>
+  </g>
+
+  <!-- fascia verde: nome e tre punti come il fronte, a destra lo smaltimento -->
+  <text class="deco w" x="11" y="74.6" font-size="4.4" letter-spacing=".15">COSTA DEL BOSCO</text>
+  <circle cx="59.5" cy="73.1" r=".75" fill="#EB7A1C"/>
+  <circle cx="62" cy="73.1" r=".75" fill="#B58C0C"/>
+  <circle cx="64.5" cy="73.1" r=".75" fill="#EAD137"/>
+  <g class="t w" font-size="1.5" font-weight="400" text-anchor="end">
+    <text x="99" y="71">Bottiglia GL 71 · Tappo <tspan class="wph">___</tspan> · Capsula <tspan class="wph">___</tspan></text>
+    <text x="99" y="73.4">Raccolta vetro. Verifica le disposizioni</text>
+    <text x="99" y="75.8">del tuo Comune.</text>
   </g>
 </svg>

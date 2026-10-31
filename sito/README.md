@@ -23,12 +23,17 @@ poi apri http://localhost:8080
 
 Nel sito i segnaposto sono evidenziati in giallo (classe `todo`). Cerca `class="todo"` in `index.html`.
 
-- [ ] Età della vigna Scavet, annata, grado alcolico
+- [x] Annata (2025), grado alcolico e analisi di Scavet, dal rapporto di prova e dal certificato Valoritalia
+- [x] Ragione sociale: Costa del Bosco S.S. Società Agricola
+- [ ] Età della vigna Scavet
 - [ ] Ettari totali di vigneto
+- [ ] Foto di nonno Natalino e nonno Luciano (riquadri tratteggiati nella sezione "Le terre")
 - [ ] Quali frutti coltivate, e se li vendete al pubblico
 - [ ] Email (ora `info@costadelbosco.it`, da verificare), telefono, Instagram, indirizzo
-- [ ] Ragione sociale e P.IVA nel footer (obbligatori per legge su un sito aziendale)
+- [ ] P.IVA nel footer (obbligatoria per legge su un sito aziendale)
 - [ ] Frase manifesto: ora è "Due terre, un nome."; si cambia nell'`<h1>`
+
+Bottiglie: il sito dice **980**, come il certificato Valoritalia (lotto L. 15326). La piattaforma di brand e la bozza di controetichetta dicevano 1.000.
 
 ## Prossimi passi consigliati
 
