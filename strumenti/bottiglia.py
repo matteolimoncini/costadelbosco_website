@@ -4,12 +4,12 @@ import sys
 
 html_path = sys.argv[1]
 
-# Profilo del corpo: largo 80 mm alle spalle (y=130), 66 mm alla base (y=298)
+# Profilo del corpo: largo 74 mm alle spalle (y=112), 62 mm alla base (y=298)
 def half_width(y):
-    return 40 - (y - 130) * (6.5 / 168)
+    return 37 - (y - 112) * (6 / 186)
 
 # Etichetta: vista frontale ~93% del diametro, si stringe con il vetro
-LABEL_TOP, N = 170.0, 48
+LABEL_TOP, N = 146.0, 48
 top_w = 2 * half_width(LABEL_TOP) * 0.93
 label_h = top_w / (1063 / 1300)
 strips = []
@@ -30,10 +30,11 @@ label_poly = (
 )
 
 svg = f'''<figure class="wine-visual reveal">
-          <!-- Bottiglia conica in vetro verde (GL 71), 0,75 l: spalle 80 mm, base 66 mm, altezza 300 mm. Generata da uno script: l'etichetta è tagliata a strisce per seguire la rastremazione -->
+          <!-- Bottiglia conica in vetro verde (GL 71), 0,75 l: spalle 74 mm, base 62 mm, altezza 300 mm. Generata da uno script: l'etichetta è tagliata a strisce per seguire la rastremazione -->
           <svg class="bottle" viewBox="0 0 100 322" role="img" aria-label="Bottiglia di Scavet in vetro verde, conica, con capsula verde e l'etichetta della vigna">
             <defs>
-              <path id="bottle-shape" d="M36 9 Q36 5 39.5 5 L60.5 5 Q64 5 64 9 L64.8 76 C65 98 90 104 90 130 L83.5 298 Q83.2 306 76 306 L24 306 Q16.8 306 16.5 298 L10 130 C10 104 35 98 35.2 76 Z" />
+              <!-- spalle alte e tese, poi il corpo si stringe dritto verso la base -->
+              <path id="bottle-shape" d="M36.4 9 Q36.4 5 39.8 5 L60.2 5 Q63.6 5 63.6 9 L64.3 70 C64.6 88 87 92 87 108 L87 112 L81 298 Q80.8 306 74 306 L26 306 Q19.2 306 19 298 L13 112 L13 108 C13 92 35.4 88 35.7 70 Z" />
               <clipPath id="bottle-clip"><use href="#bottle-shape" /></clipPath>
               <clipPath id="label-clip"><polygon points="{label_poly}" /></clipPath>
               <image id="label-img" href="assets/scavet-etichetta.jpg" width="1063" height="1300" />
@@ -82,21 +83,21 @@ svg = f'''<figure class="wine-visual reveal">
             </defs>
 
             <!-- ombra a terra -->
-            <ellipse cx="50" cy="307" rx="40" ry="6" fill="url(#floor)" />
+            <ellipse cx="50" cy="307" rx="36" ry="5.5" fill="url(#floor)" />
 
             <!-- vetro -->
             <use href="#bottle-shape" fill="url(#glass)" />
             <g clip-path="url(#bottle-clip)">
               <rect width="100" height="322" fill="url(#glass-depth)" />
               <!-- riflessi lunghi: finestra a sinistra, controluce a destra -->
-              <path d="M24.5 136 L29 298" stroke="#e9f5e4" stroke-opacity=".55" stroke-width="3.2" stroke-linecap="round" filter="url(#soft)" />
-              <path d="M26 140 L30 292" stroke="#fff" stroke-opacity=".75" stroke-width=".9" stroke-linecap="round" />
-              <path d="M78.5 140 L74.5 290" stroke="#bfe6b8" stroke-opacity=".18" stroke-width="2" stroke-linecap="round" filter="url(#soft)" />
-              <path d="M38 112 C29 116 21 122 18.5 132" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-linecap="round" filter="url(#soft)" />
-              <path d="M12.5 140 L18.6 298" stroke="#6f9f68" stroke-opacity=".22" stroke-width="1.4" filter="url(#soft)" />
-              <path d="M87.5 140 L81.4 298" stroke="#6f9f68" stroke-opacity=".18" stroke-width="1.4" filter="url(#soft)" />
+              <path d="M26 118 L29.6 298" stroke="#e9f5e4" stroke-opacity=".55" stroke-width="3" stroke-linecap="round" filter="url(#soft)" />
+              <path d="M27.4 122 L30.6 292" stroke="#fff" stroke-opacity=".75" stroke-width=".85" stroke-linecap="round" />
+              <path d="M76 122 L73 290" stroke="#bfe6b8" stroke-opacity=".18" stroke-width="2" stroke-linecap="round" filter="url(#soft)" />
+              <path d="M38 88 C30 92 21 98 18.5 106" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-linecap="round" filter="url(#soft)" />
+              <path d="M15 114 L20.6 298" stroke="#6f9f68" stroke-opacity=".22" stroke-width="1.4" filter="url(#soft)" />
+              <path d="M85 114 L79.4 298" stroke="#6f9f68" stroke-opacity=".18" stroke-width="1.4" filter="url(#soft)" />
               <!-- fondo spesso del vetro -->
-              <ellipse cx="50" cy="301" rx="31" ry="4.5" fill="#4f7a48" opacity=".25" filter="url(#softer)" />
+              <ellipse cx="50" cy="301" rx="28" ry="4.2" fill="#4f7a48" opacity=".25" filter="url(#softer)" />
             </g>
             <use href="#bottle-shape" fill="none" stroke="#a9dca2" stroke-opacity=".18" stroke-width=".45" />
 
