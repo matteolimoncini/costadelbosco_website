@@ -29,11 +29,11 @@ Nel sito i segnaposto sono evidenziati in giallo (classe `todo`). Cerca `class="
 - [ ] Ettari totali di vigneto
 - [ ] Foto di nonno Natalino e nonno Luciano (riquadri tratteggiati nella sezione "Le terre")
 - [ ] Quali frutti coltivate, e se li vendete al pubblico
-- [ ] Email (ora `info@costadelbosco.it`, da verificare), telefono, Instagram, indirizzo
-- [ ] P.IVA nel footer (obbligatoria per legge su un sito aziendale)
+- [x] P.IVA, sede, REA, PEC ed email aziendale, dal documento "Dati di base Costa del Bosco" su Drive
+- [ ] Telefono pubblico e Instagram
 - [ ] Frase manifesto: ora è "Due terre, un nome."; si cambia nell'`<h1>`
 
-Bottiglie: il sito dice **980**, come il certificato Valoritalia (lotto L. 15326). La piattaforma di brand e la bozza di controetichetta dicevano 1.000.
+Bottiglie: **980** ovunque (sito, piattaforma di brand, identità visiva, controetichetta), come il certificato Valoritalia (lotto L. 15326).
 
 ## Prossimi passi consigliati
 
