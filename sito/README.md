@@ -28,9 +28,10 @@ Nel sito i segnaposto sono evidenziati in giallo (classe `todo`). Cerca `class="
 - [ ] Età della vigna Scavet
 - [ ] Ettari totali di vigneto
 - [ ] Foto di nonno Natalino e nonno Luciano (riquadri tratteggiati nella sezione "Le terre")
-- [ ] Quali frutti coltivate, e se li vendete al pubblico
+- [x] Frutta: ciliegie, prugne, pesche, melograni, castagne, in vendita diretta in azienda
 - [x] P.IVA, sede, REA, PEC ed email aziendale, dal documento "Dati di base Costa del Bosco" su Drive
-- [ ] Telefono pubblico e Instagram
+- [x] Telefono: 333 537 6501
+- [ ] Instagram
 - [ ] Frase manifesto: ora è "Due terre, un nome."; si cambia nell'`<h1>`
 
 Bottiglie: **980** ovunque (sito, piattaforma di brand, identità visiva, controetichetta), come il certificato Valoritalia (lotto L. 15326).
